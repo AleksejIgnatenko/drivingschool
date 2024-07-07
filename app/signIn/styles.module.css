@@ -1,0 +1,84 @@
+.inputContainer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    background-image: url('./img.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .container ::placeholder {
+    color: white;
+  }
+  
+  .container {
+    background: transparent;
+    box-shadow: 0 0 10px rgba(0,0,0,1);
+    color: #fff;
+    border-radius: 12px;
+    backdrop-filter: blur(7px);
+    width: 460px;
+    height: 460px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, .2);
+  }
+  
+  .RMF {
+    text-align: start;
+    width: 375px;
+    height: 40px;
+    color: white;
+  }
+  
+  .RM {
+    margin-right: 70px;
+  }
+  
+  .container > h1 {
+    font-size: 35px;
+    color: white;
+  }
+  
+  .container > div > input[type="text"] {
+    width: 350px;
+    height: 40px;
+    background-color: rgba(250, 235, 215, 0.1);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 15px;
+    color: white;
+  }
+  
+  .txtBox > i {
+    font-size: 22px;
+    position: relative;
+    top: 5px;
+    right: 40px;
+  }
+  
+  .login {
+    width: 360px;
+    height: 46px;
+    margin-right: 25px;
+    border-radius: 15px;
+    background-color: #fff;
+    font-size: 18px;
+    color: black;
+    border: 2px solid rgba(255, 255, 255, .2);
+  }
+  
+  .register {
+    font-weight: bold;
+  }
+  
+  .p {
+    color: white;
+  }
