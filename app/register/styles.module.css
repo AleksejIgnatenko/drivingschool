@@ -1,0 +1,129 @@
+.inputContainer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .container ::placeholder {
+    color: white;
+  }
+  
+  .container {
+    background: transparent;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+    color: #fff;
+    border-radius: 12px;
+    backdrop-filter: blur(7px);
+    width: 460px;
+    height: 600px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, .2);
+  }
+  
+  .RMF {
+    text-align: start;
+    width: 375px;
+    height: 40px;
+    color: white;
+  }
+  
+  .box{
+    cursor: pointer;
+  }
+  
+  .RM {
+    margin-right: 70px;
+  }
+  
+  .FP{
+    cursor:pointer;
+  }
+  
+  .container > h1 {
+    font-size: 35px;
+    color: white;
+  }
+  
+  .container > div > input[type="text"],
+  .container > div > input[type="email"],
+  .container > div > input[type="password"] {
+    width: 350px;
+    height: 40px;
+    background-color: rgba(250, 235, 215, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    color: white;
+    outline: none; /* Remove the default outline */
+    padding-left: 1em;
+  }
+  .container > div > input[type="text"]:focus,
+  .container > div > input[type="email"]:focus,
+  .container > div > input[type="password"]:focus {
+      outline: 2px solid #afafaf; /* Add a white outline on focus */
+      outline-offset: 1px; /* Adjust the offset of the outline */
+  }
+  
+  .txtBox > i {
+    font-size: 22px;
+    position: relative;
+    top: 5px;
+    right: 40px;
+  }
+
+  .buttonSignIn {
+    width: 360px;
+    height: 46px;
+    margin-right: 25px;
+    border-radius: 15px;
+    background-color: #fff;
+    font-size: 18px;
+    color: black;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .buttonSignIn {
+    cursor: pointer;
+  }
+  
+  .buttonBack {
+    width: 360px;
+    height: 46px;
+    margin-right: 25px;
+    border-radius: 15px;
+    background-color: transparent; /* Удалите задний цвет */
+    font-size: 18px;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: none; /* Удалите задний цвет */
+  }
+  
+  .buttonBack:hover {
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+  }
+  
+  .register {
+    padding-left: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .register:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .p {
+    color: white;
+  }
