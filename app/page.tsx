@@ -7,7 +7,7 @@ import styles from './page.module.css'; // Make sure the file path is correct
 const inter = Inter({ subsets: ["latin"] });
 const menuItems = [
   { key: "home", label: <Link href={"/"} style={{ color: "white" }}>Home</Link> },
-  { key: "signIn", label: <Link href={"/signIn"} style={{ color: "white" }}>Sign In</Link> },
+  { key: "signIn", label: <Link href={"/login"} style={{ color: "white" }}>Login</Link> },
 ];
 
 export default function Home() {

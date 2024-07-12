@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import styles from './styles.module.css';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
-import { createUser, UserRequest } from '../services/users';
+import { RegisterUserModelRequest } from '../services/userServices/registerUser';
+import { registerUser } from '../services/userServices/registerUser';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,13 +15,12 @@ export default function Register() {
   const [password, setPassword] = useState('');
 
   const handleRegister = async () => {
-    const userRequest: UserRequest = {
+    const registerUserRequest: RegisterUserModelRequest = {
       userName,
       email,
       password,
-      role: 'user'
     };
-    await createUser(userRequest);
+    await registerUser(registerUserRequest);
   };
 
   return (
@@ -76,9 +76,7 @@ export default function Register() {
           </Link>
           <p>
             Already have an account?
-            <Link href={"/login"} className={styles.register}>
-              Login
-            </Link>
+            <Link href={"/login"} className={styles.register}>Login</Link>
           </p>
         </div>
       </div>
