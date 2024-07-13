@@ -22,7 +22,7 @@ export default function Login() {
   };
 
   return (
-    <body
+    <div
       className={inter.className}
       style={{
         backgroundImage: "url('/images/SignInPage.jpg')",
@@ -70,6 +70,6 @@ export default function Login() {
         </p>
         </div>
     </div>
-    </body>
+    </div>
   );
 }
