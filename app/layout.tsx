@@ -27,8 +27,8 @@ export default function RootLayout({
     // Проверяем наличие файла cookie с именем 'jwtToken'
     if (!hasBeenCalledRef.current) {
       hasBeenCalledRef.current = true;
+      const jwtToken = Cookies.get('jwtToken');
       if (!cookieChecked) {
-        const jwtToken = Cookies.get('jwtToken');
         if (jwtToken) {
           // Если файл cookie есть, добавляем новый элемент в массив menuItems
           const updatedMenuItems = [...menuItems, { key: "profile", label: <Link href={"/profile"} style={{ color: "white" }}>Profile</Link> }];
@@ -39,6 +39,10 @@ export default function RootLayout({
           setMenuItemsUpdated(updatedMenuItems);
         }
         setCookieChecked(true);
+      }
+
+      if ((window.location.pathname === '/login' && jwtToken) || (window.location.pathname === '/register' && jwtToken)) {
+          window.location.href = '/profile'; 
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -24,7 +24,7 @@ export default function Register() {
   };
 
   return (
-    <body
+    <div
       className={inter.className}
       style={{
         backgroundImage: "url('/images/SignInPage.jpg')",
@@ -80,6 +80,6 @@ export default function Register() {
           </p>
         </div>
       </div>
-    </body>
+    </div>
   );
 }
