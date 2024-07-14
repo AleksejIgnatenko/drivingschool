@@ -1,3 +1,13 @@
+.backgroundContainer {
+  background-image: url('/images/SignInPage.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
 .inputContainer {
   height: 100vh;
   display: flex;

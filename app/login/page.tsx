@@ -19,57 +19,47 @@ export default function Login() {
       password,
     };
     await loginUser(loginUserRequest);
+    window.location.href = '/';
   };
 
   return (
-    <div
-      className={inter.className}
-      style={{
-        backgroundImage: "url('/images/SignInPage.jpg')",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        width: "100vw",
-        height: "100vh",
-        margin: 0,
-      }}
-    >
-      <div className={styles.inputContainer}>
-        <div className={styles.container}>
-        <h1>Login</h1>
-        <div className={styles.txtBox}>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <i className='bx bx-user-circle'></i>
-        </div>
-        <div className={styles.txtBox}>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <i className='bx bx-lock-alt'></i>
-        </div>
-        <div className={styles.RMF}>
-            <input type="checkbox" className={styles.box} />
-            <span className={styles.RM}>Remember me</span>
-            <span className={styles.FP}>Forget Password</span>
-        </div>
-          <input type="button" value="Register" className={styles.buttonSignIn} onClick={handleLogin} />
-        <Link href={"/"}>
-            <input type="button" value="Back" className={styles.buttonBack} />
-        </Link>
+      <div className={styles.backgroundContainer}>
+        <div className={styles.inputContainer}>
+          <div className={styles.container}>
+          <h1>Login</h1>
+          <div className={styles.txtBox}>
+             <input
+               type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+             />
+             <i className='bx bx-user-circle'></i>
+          </div>
+         <div className={styles.txtBox}>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+             />
+              <i className='bx bx-lock-alt'></i>
+          </div>
+          <div className={styles.RMF}>
+              <input type="checkbox" className={styles.box} />
+              <span className={styles.RM}>Remember me</span>
+              <span className={styles.FP}>Forget Password</span>
+          </div>
+            <input type="button" value="Register" className={styles.buttonSignIn} onClick={handleLogin} />
+          <Link href={"/"}>
+              <input type="button" value="Back" className={styles.buttonBack} />
+          </Link>
         
-        <p>Don't have an account?
-          <Link href={"/register"} className={styles.register}>Register</Link>
-        </p>
-        </div>
-    </div>
+          <p>Don't have an account?
+           <Link href={"/register"} className={styles.register}>Register</Link>
+          </p>
+          </div>
+      </div>
     </div>
   );
 }
