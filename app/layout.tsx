@@ -50,11 +50,11 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
           <Layout>
             <Header className={styles.header}>
              <Menu
-               items={menuItemsUpdated}
+                items={menuItemsUpdated}
                 mode="horizontal"
                 className={styles.menu}
               />
@@ -63,7 +63,7 @@ export default function RootLayout({
               {children}
             </Content>
           </Layout>
-        <Footer className={styles.footer}>Footer</Footer>
+        {/* <Footer className={styles.footer}>Footer</Footer> */}
       </body>
     </html>
   );

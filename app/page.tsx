@@ -6,11 +6,17 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <div className={styles.backgroundImage}>
-      <div className={styles.content}>
-        <Link className={styles.text} href={"#backgroundImage"}>Welcome</Link>
+    <main className={styles.main}>
+      <div className={styles.backgroundImage} style={{ backgroundImage: `url('/images/MainPage.png')` }}>
+        <div className={styles.content}>
+          <Link className={styles.text} href={"#backgroundImage"}>Welcome</Link>
+        </div>
       </div>
-      <div id="backgroundImage" className={styles.backgroundImage1}/>
-    </div>
+      <div className={styles.backgroundImage} style={{ backgroundImage: `url('/images/MainPage.png')` }}>
+        <div className={styles.content1}>
+          <Link className={styles.text} href={"#backgroundImage"}>Welcome</Link>
+        </div>
+      </div>
+    </main>
   );
 }

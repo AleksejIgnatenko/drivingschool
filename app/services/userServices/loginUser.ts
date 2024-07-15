@@ -19,7 +19,7 @@ export const loginUser = async (userRequest: LoginUserModelRequests) => {
       // If the response is successful (status 2xx), get the JWT token
       const token = await response.json();
       if (token) {
-        const expirationTime = new Date(new Date().getTime() + 12 * 60 * 60 * 1000); // Token is valid for 24 hours
+        const expirationTime = new Date(new Date().getTime() + 12 * 60 * 60 * 1000); // Token is valid for 12 hours
         Cookies.set('jwtToken', token, { expires: expirationTime });
       }
     } else {
