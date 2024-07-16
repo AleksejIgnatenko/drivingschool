@@ -41,6 +41,11 @@
   right: 140px;
 }
 
+.resultDisplay {
+  position: relative;
+  margin-left: 50px;
+}
+
 .buttonBack {
   width: 360px;
   height: 46px;

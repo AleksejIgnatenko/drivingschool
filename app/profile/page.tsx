@@ -34,6 +34,15 @@ export default function Login() {
           <div className={styles.h3Box}>
             <h3>Name: {userData?.userName}</h3> {/* Отображаем имя пользователя из состояния */}
             <h3>Email: {userData?.email}</h3> {/* Отображаем email пользователя из состояния */}
+            <div className={styles.resultDisplay}>
+            {
+              userData?.resultsTests && Object.entries(userData.resultsTests).map(([category, results], index) => (
+                <h3 key={index}>
+                  {category}: {results.join(", ")}
+                </h3>
+              ))
+            }
+            </div>
           </div>
           <Link href={"/"}>
             <input type="button" value="Back" className={styles.buttonBack} />
