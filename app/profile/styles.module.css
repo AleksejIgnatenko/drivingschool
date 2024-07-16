@@ -1,0 +1,62 @@
+.backgroundContainer {
+  background-image: url('/images/SignInPage.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+.lableContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  background: transparent;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  color: #fff;
+  border-radius: 12px;
+  backdrop-filter: blur(7px);
+  width: 460px;
+  height: 460px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, .2);
+}
+
+.h3Box{
+  position: relative;
+  right: 140px;
+}
+
+.buttonBack {
+  width: 360px;
+  height: 46px;
+  margin-right: 25px;
+  border-radius: 15px;
+  background-color: #fff;
+  font-size: 18px;
+  color: black;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.buttonBack:hover {
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+.p {
+  color: white;
+}

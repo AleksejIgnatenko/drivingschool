@@ -1,7 +1,3 @@
-.header {
-  visibility:collapse;
-}
-
 .backgroundContainer {
   background-image: url('/images/SignInPage.jpg');
   background-size: cover;
