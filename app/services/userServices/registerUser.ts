@@ -16,8 +16,9 @@ export const registerUser = async (userRequest: RegisterUserModelRequest) => {
 
         if (response.ok) {
             // Если ответ успешный (статус 2xx), получаем id пользователя
-            const userId = await response.json();
-            console.log('User created with ID:', userId);
+            // const userId = await response.json();
+            // console.log('User created with ID:', userId);
+            window.location.href = '/';
         } else {
             // Если ответ не успешный, проверяем статус и обрабатываем ошибку
             const errorMessage = await response.text();
