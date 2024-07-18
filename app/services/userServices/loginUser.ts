@@ -29,7 +29,5 @@ export const loginUser = async (userRequest: LoginUserModelRequests) => {
     }
   } catch (error) {
     console.error("Error fetching:", error);
-    // Handle any errors that occurred during the request
-    throw error;
   }
 };

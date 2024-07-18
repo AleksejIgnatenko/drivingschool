@@ -26,7 +26,5 @@ export const registerUser = async (userRequest: RegisterUserModelRequest) => {
         }
     } catch (error) {
         console.error('Error fetching:', error);
-        // Здесь можно обработать любые ошибки, возникшие во время запроса
-        throw error;
     }
 };

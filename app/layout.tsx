@@ -8,6 +8,7 @@ import "./globals.css";
 import styles from './page.module.css'; 
 import { useEffect, useState, useRef } from "react";
 import Cookies from 'js-cookie';
+import { isAdmin } from "./services/userServices/isAdmin";
 
 const inter = Inter({ subsets: ["latin"] });
 const menuItems = [
@@ -23,30 +24,47 @@ export default function RootLayout({
   const [menuItemsUpdated, setMenuItemsUpdated] = useState(menuItems);
   const hasBeenCalledRef = useRef(false);
 
-  useEffect(() => {
-    // Проверяем наличие файла cookie с именем 'jwtToken'
-    if (!hasBeenCalledRef.current) {
-      hasBeenCalledRef.current = true;
-      const jwtToken = Cookies.get('jwtToken');
-      if (!cookieChecked) {
-        if (jwtToken) {
-          // Если файл cookie есть, добавляем новый элемент в массив menuItems
-          const updatedMenuItems = [...menuItems, { key: "profile", label: <Link href={"/profile"} style={{ color: "white" }}>Profile</Link> }];
-          setMenuItemsUpdated(updatedMenuItems);
-        } else {
-          // Если файл cookie не существует, добавляем другой элемент в массив menuItems
-          const updatedMenuItems = [...menuItems, { key: "signIn", label: <Link href={"/login"} style={{ color: "white" }}>Login</Link> }];
-          setMenuItemsUpdated(updatedMenuItems);
-        }
-        setCookieChecked(true);
-      }
+ useEffect(() => {
+  // Проверяем наличие файла cookie с именем 'jwtToken'
+  if (!hasBeenCalledRef.current) {
+    hasBeenCalledRef.current = true;
+    const jwtToken = Cookies.get('jwtToken');
+    if (!cookieChecked) {
+      if (jwtToken) {
+        // Если файл cookie есть, добавляем новый элемент в массив menuItems
+        const updatedMenuItems = [...menuItems, { key: "profile", label: <Link href={"/profile"} style={{ color: "white" }}>Profile</Link> }];
+        setMenuItemsUpdated(updatedMenuItems);
 
-      if ((window.location.pathname === '/login' && jwtToken) || (window.location.pathname === '/register' && jwtToken)) {
-          window.location.href = '/profile'; 
+        // Вызываем функцию isAdmin с использованием ключевого слова await
+        const checkAdminStatus = async () => {
+          try {
+            const isAdminResult = await isAdmin();
+            if (isAdminResult) {
+              if (window.location.pathname !== "/admin") {
+                window.location.href = '/admin'; 
+              }
+            }
+          } catch (error) {
+            // Обработка ошибки
+          }
+        };
+
+        checkAdminStatus();
+        
+      } else {
+        // Если файл cookie не существует, добавляем другой элемент в массив menuItems
+        const updatedMenuItems = [...menuItems, { key: "signIn", label: <Link href={"/login"} style={{ color: "white" }}>Login</Link> }];
+        setMenuItemsUpdated(updatedMenuItems);
       }
+      setCookieChecked(true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cookieChecked]);
+
+    if ((window.location.pathname === '/login' && jwtToken) || (window.location.pathname === '/register' && jwtToken)) {
+      window.location.href = '/profile'; 
+    }
+  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [cookieChecked]);
 
   return (
     <html lang="en">
