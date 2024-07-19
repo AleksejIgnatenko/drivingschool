@@ -27,29 +27,24 @@ export default function Users() {
     }
   }, []);
 
-   return (
-    <main className={styles.main}>
-      <div className={styles.backgroundContainer}>
-        <div className={styles.firstRow}>
-          {userData.map((user, index) => (
-            <div key={index} className={styles.card}>
-              <div className={styles.container}>
-                <div className={styles.content}>
-                  <h3>Id: {user.idUser}</h3>
-                  <h3>User name: {user.userName}</h3>
-                  <h3>Email: {user.email}</h3>
-                  <h3>Role: {user.role}</h3>
-                </div>
+return (
+  <main className={styles.main}>
+    <div className={styles.backgroundContainer}>
+      <div className={styles.cardContainer}>
+        {userData.map((user, index) => (
+          <div key={index} className={styles.card}>
+            <div className={styles.container}>
+              <div className={styles.content}>
+                <h3>Id: {user.idUser}</h3>
+                <h3>User name: {user.userName}</h3>
+                <h3>Email: {user.email}</h3>
+                <h3>Role: {user.role}</h3>
               </div>
             </div>
-            ))}
-        </div>
+          </div>
+        ))}
       </div>
-      <div className={styles.backgroundContainer}>
-        <div className={styles.firstRow}>
-          
-        </div>
-      </div>
-    </main>
-  );
+    </div>
+  </main>
+);
 }
