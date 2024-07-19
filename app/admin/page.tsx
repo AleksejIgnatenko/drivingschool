@@ -1,19 +1,22 @@
 'use client';
 
-import styles from './styles.module.css'; // Убедитесь, что путь к файлу указан правильно
+import styles from './styles.module.css';
+import Link from "next/link";
 
 export default function Login() {
 
   return (
     <div className={styles.backgroundContainer}>
       <div className={styles.firstRow}>
-        <div className={styles.card}>
-          <div className={styles.container}>
-            <div className={styles.сontent}>
-              <h1>Users</h1>
+        <Link href={"/admin/users"}>
+          <div className={styles.card}>
+            <div className={styles.container}>
+              <div className={styles.сontent}>
+                <h1>Users</h1>
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
         <div className={styles.card}>
           <div className={styles.container}>
             <div className={styles.сontent}>
@@ -59,6 +62,7 @@ export default function Login() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }

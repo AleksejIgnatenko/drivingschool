@@ -36,20 +36,20 @@ export default function RootLayout({
         setMenuItemsUpdated(updatedMenuItems);
 
         // Вызываем функцию isAdmin с использованием ключевого слова await
-        const checkAdminStatus = async () => {
-          try {
-            const isAdminResult = await isAdmin();
-            if (isAdminResult) {
-              if (window.location.pathname !== "/admin") {
-                window.location.href = '/admin'; 
-              }
-            }
-          } catch (error) {
-            // Обработка ошибки
-          }
-        };
+        // const checkAdminStatus = async () => {
+        //   try {
+        //     const isAdminResult = await isAdmin();
+        //     if (isAdminResult) {
+        //       if (window.location.pathname !== "/admin") {
+        //         window.location.href = '/admin'; 
+        //       }
+        //     }
+        //   } catch (error) {
+        //     // Обработка ошибки
+        //   }
+        // };
 
-        checkAdminStatus();
+        // checkAdminStatus();
         
       } else {
         // Если файл cookie не существует, добавляем другой элемент в массив menuItems

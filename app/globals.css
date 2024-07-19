@@ -7,7 +7,7 @@ body {
   scroll-behavior: smooth;
 }
 
-header {
+.header {
   position: absolute;
   top: 0;
   left: 0;
@@ -15,6 +15,11 @@ header {
   z-index: 1;
   background-color: transparent !important;
   box-shadow: none !important;
+  transition: transform 0.3s ease;
+}
+
+.hideHeader {
+  transform: translateY(-100%);
 }
 
 a {
