@@ -4,6 +4,8 @@ import styles from './styles.module.css';
 import { useEffect, useState, useRef } from "react";
 import { fetchAllUsersAsync, User } from '../../services/userServices/fetchAllUsersAsync';
 import Link from 'next/link';
+import Image from 'next/image';
+import { handleIssueModerator, handleCancellation, handleDeleteModerator } from './script';
 
 export default function Users() {
   const hasBeenCalledRef = useRef(false);
@@ -13,38 +15,76 @@ export default function Users() {
     if (!hasBeenCalledRef.current) {
       hasBeenCalledRef.current = true;
 
-        const getAllUsersAsync = async () => { 
+      const getAllUsersAsync = async () => { 
         const users = await fetchAllUsersAsync();
         if (users) {
-            setUserData(users); // Сохраняем данные о пользователях в состояние
-                          console.log(users);
+          setUserData(users); // Сохраняем данные о пользователях в состояние
         } else {
-            // Обработка случая, когда данные о пользователях недоступны
+          // Обработка случая, когда данные о пользователях недоступны
         }
-        };
+      };
 
       getAllUsersAsync();
     }
   }, []);
 
-return (
-  <main className={styles.main}>
-    <div className={styles.backgroundContainer}>
-      <div className={styles.cardContainer}>
-        {userData.map((user, index) => (
-          <div key={index} className={styles.card}>
-            <div className={styles.container}>
-              <div className={styles.content}>
-                <h3>Id: {user.idUser}</h3>
-                <h3>User name: {user.userName}</h3>
-                <h3>Email: {user.email}</h3>
-                <h3>Role: {user.role}</h3>
+  return (
+    <main className={styles.main}>
+      <div className={styles.backgroundContainer}>
+        <div className={styles.cardContainer}>
+          {userData.map((user, index) => (
+            <div key={index} className={styles.card}>
+              <div className={styles.container}>
+                <div className={styles.content}>
+                  <h3 data-id={user.idUser}>Id: {user.idUser}</h3>
+                  <h3>User name: {user.userName}</h3>
+                  <h3>Email: {user.email}</h3>
+                  <h3>Role: {user.role}</h3>
+                  <div className={styles.buttonContainer}>
+                    <button
+                      className={styles.buttonIssueModerator}
+                      title="Issue a Moderator"
+                      onClick={(event) => handleIssueModerator(event)}
+                    >
+                      <Image src="/images/IssueModerator.png" alt="Описание изображения" height={20} width={20} />
+                    </button>
+                    <button 
+                      className={styles.buttonConfirmModerator} 
+                      title="Confirm">
+                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
+                    </button>
+                    <button 
+                      className={styles.buttonCancellationModerator} 
+                      title="Cancellation"
+                      onClick={(event) => handleCancellation(event)}>
+                      <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
+                    </button>
+
+                    <button 
+                      className={styles.buttonDeleteModerator} 
+                      title="Delete a Moderator"
+                      onClick={(event) => handleDeleteModerator(event)}>
+                      <Image src="/images/DeleteModerator.png" alt="Описание изображения" height={20} width={20} />
+                    </button>
+                    <button 
+                      className={styles.buttonConfirmModerator} 
+                      title="Confirm">
+                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
+                    </button>
+                    <button 
+                      className={styles.buttonCancellationModerator} 
+                      title="Cancellation"
+                      onClick={(event) => handleCancellation(event)}>
+                      <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
+                    </button>
+
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </main>
-);
+    </main>
+  );
 }

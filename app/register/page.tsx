@@ -27,7 +27,7 @@ export default function Register() {
     <div
       className={inter.className}
       style={{
-        backgroundImage: "url('/images/SignInPage.jpg')",
+        backgroundImage: "url('/images/Night.jpg')",
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',

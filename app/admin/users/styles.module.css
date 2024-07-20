@@ -1,5 +1,5 @@
 .backgroundContainer {
-  background-image: url('/images/MainPage.png');
+  background-image: url('/images/Comet.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -51,6 +51,36 @@
 }
 
 .content {
-  justify-content: center;
+  justify-content: space-between; /* Distribute the content vertically */
   align-items: center;
+  display: flex;
+  flex-direction: column; /* Arrange the content in a column */
+  width: 100%;
+  padding: 10px; /* Add some padding to the content */
+}
+
+.buttonContainer{
+  justify-content: center; /* Center the content vertically */
+  margin-top: auto;
+  align-items: center;
+  display: flex;
+  flex-direction: row; /* Arrange the content in a row */
+  width: 100%;
+  gap: 10px; /* Add some space between the buttons */
+}
+
+.buttonIssueModerator,
+.buttonDeleteModerator,
+.buttonConfirmModerator,
+.buttonCancellationModerator {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-top: auto; /* Push the button to the bottom */
+}
+
+.buttonConfirmModerator,
+.buttonCancellationModerator {
+  display: none;
 }
