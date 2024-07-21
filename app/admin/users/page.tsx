@@ -2,10 +2,11 @@
 
 import styles from './styles.module.css';
 import { useEffect, useState, useRef } from "react";
-import { fetchAllUsersAsync, User } from '../../services/userServices/fetchAllUsersAsync';
+import { fetchAllUsersAsync } from '../../services/userServices/fetchAllUsersAsync';
+import { User } from '@/app/Models/UserModels/User';
 import Link from 'next/link';
 import Image from 'next/image';
-import { handleIssueModerator, handleCancellation, handleDeleteModerator } from './script';
+import { handleIssueModerator, handleAddModeratorRole, handleCancellation, handleDeleteModerator, handleDeleteModeratorRole } from './script';
 
 export default function Users() {
   const hasBeenCalledRef = useRef(false);
@@ -55,7 +56,8 @@ return (
                   </button>
                   <button 
                     className={styles.buttonConfirmModerator} 
-                    title="Confirm">
+                    title="Confirm"
+                    onClick={(event) => handleAddModeratorRole(event)}>
                     <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
@@ -64,6 +66,7 @@ return (
                     onClick={(event) => handleCancellation(event)}>
                     <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>
+
                   <button 
                     className={styles.buttonDeleteModerator} 
                     title="Delete a Moderator"
@@ -72,7 +75,8 @@ return (
                   </button>
                   <button 
                     className={styles.buttonConfirmModerator} 
-                    title="Confirm">
+                    title="Confirm"
+                    onClick={(event) => handleDeleteModeratorRole(event)}>
                     <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 

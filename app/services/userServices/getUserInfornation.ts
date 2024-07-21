@@ -1,12 +1,12 @@
 import Cookies from 'js-cookie';
 
-export interface Users {
+export interface User {
   userName: string;
   email: string;
   resultsTests: Record<string, number[]> | null;
 }
 
-export const getUserByIdAsync = async (): Promise<Users | null> => {
+export const getUserByIdAsync = async (): Promise<User | null> => {
   try {
     const jwtToken = Cookies.get('jwtToken');
     if (!jwtToken) {
@@ -25,7 +25,7 @@ export const getUserByIdAsync = async (): Promise<Users | null> => {
     if (response.ok) {
       // Если ответ успешный (статус 2xx), получаем информацию о пользователе
       const userData = await response.json();
-      return userData as Users;
+      return userData as User;
     } else {
       // Если ответ не успешный, проверяем статус и обрабатываем ошибку
       const errorMessage = await response.text();

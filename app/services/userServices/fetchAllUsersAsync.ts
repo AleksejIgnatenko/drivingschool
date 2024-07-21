@@ -1,12 +1,5 @@
 import Cookies from 'js-cookie';
-
-export interface User {
-  idUser: string;
-  userName: string;
-  email: string;
-  role: string;
-  resultsTests: Record<string, number[]> | null;
-}
+import { User } from '@/app/Models/UserModels/User';
 
 export const fetchAllUsersAsync = async (): Promise<User[] | null> => {
   try {

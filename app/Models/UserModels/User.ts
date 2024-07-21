@@ -1,7 +1,7 @@
-interface User{
-    id: string;
+export interface User{
+    idUser: string;
     userName: string;
     email: string;
-    password: string;
     role: string;
+    resultsTests: Record<string, number[]> | null;
 }
