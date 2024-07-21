@@ -1,12 +1,12 @@
 import Cookies from 'js-cookie';
 
 export interface User {
-    idUser: string;
-    userName: string;
-    email: string;
-    role: string;
-    //resultsTests: Record<string, number[]> | null;
-  }
+  idUser: string;
+  userName: string;
+  email: string;
+  role: string;
+  resultsTests: Record<string, number[]> | null;
+}
 
 export const fetchAllUsersAsync = async (): Promise<User[] | null> => {
   try {
@@ -20,23 +20,26 @@ export const fetchAllUsersAsync = async (): Promise<User[] | null> => {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        "Authorization": `Bearer ${jwtToken}`, // Передача JWT-токена в заголовке Authorization
+        "Authorization": `Bearer ${jwtToken}`,
       },
     });
 
     if (response.ok) {
-      // Если ответ успешный (статус 2xx), получаем информацию о пользователе
-      const userData = await response.json();
-      return userData as User[];
+      const responseData = await response.json();
+      return responseData.map((data: any) => ({
+        idUser: data.idUser,
+        userName: data.userName,
+        email: data.email,
+        role: data.role,
+        resultsTests: data.resultsTests,
+      }));
     } else {
-      // Если ответ не успешный, проверяем статус и обрабатываем ошибку
       const errorMessage = await response.text();
       console.error('Error fetching user information:', errorMessage);
       return null;
     }
   } catch (error) {
     console.error('Error fetching:', error);
-    // Здесь можно обработать любые ошибки, возникшие во время запроса
     throw error;
   }
 };
