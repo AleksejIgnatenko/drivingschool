@@ -61,7 +61,24 @@
   max-height: 380px; /* Adjust the max-height as needed */
 }
 
-.buttonContainer{
+.container > div > input[type="text"] {
+  display: none;
+  width: 350px;
+  height: 40px;
+  background-color: rgba(250, 235, 215, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  color: white;
+  outline: none; /* Remove the default outline */
+  padding-left: 1em;
+}
+
+.container > div > input[type="text"]:focus {
+    outline: 2px solid #afafaf; /* Add a white outline on focus */
+    outline-offset: 1px; /* Adjust the offset of the outline */
+}
+
+.buttonContainer {
   justify-content: center; /* Center the content vertically */
   margin-top: auto;
   align-items: center;
@@ -72,17 +89,26 @@
 }
 
 .buttonIssueModerator,
-.buttonDeleteModerator,
 .buttonConfirmModerator,
-.buttonCancellationModerator {
+.buttonCancellationModerator,
+.buttonDeleteModerator,
+.buttonConfirmDeleteModerator,
+.buttonCancellationDeleteModerator,
+.buttonNameChange,
+.buttonConfirmNameChange,
+.buttonCancellationNameChange {
   background-color: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
-  margin-top: auto; /* Push the button to the bottom */
+  margin-top: auto;
 }
 
 .buttonConfirmModerator,
-.buttonCancellationModerator {
+.buttonCancellationModerator,
+.buttonConfirmDeleteModerator,
+.buttonCancellationDeleteModerator,
+.buttonConfirmNameChange,
+.buttonCancellationNameChange {
   display: none;
 }

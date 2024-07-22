@@ -54,7 +54,7 @@
     color: white;
   }
   
-  .container > div > input[type="text"],
+  .container > input[type="text"],
   .container > div > input[type="email"],
   .container > div > input[type="password"] {
     width: 350px;
@@ -66,6 +66,7 @@
     outline: none; /* Remove the default outline */
     padding-left: 1em;
   }
+  
   .container > div > input[type="text"]:focus,
   .container > div > input[type="email"]:focus,
   .container > div > input[type="password"]:focus {

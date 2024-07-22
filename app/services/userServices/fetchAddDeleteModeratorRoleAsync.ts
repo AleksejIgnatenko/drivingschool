@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie';
 import { User } from '@/app/Models/UserModels/User';
 import { getCookie } from '@/app/Infrastructure/getCookie';
 
