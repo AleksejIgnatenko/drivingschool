@@ -1,5 +1,5 @@
-import Cookies from 'js-cookie';
-
+import { getCookie } from '@/app/Infrastructure/getCookie';
+ 
 export interface User {
   userName: string;
   email: string;
@@ -8,11 +8,7 @@ export interface User {
 
 export const getUserByIdAsync = async (): Promise<User | null> => {
   try {
-    const jwtToken = Cookies.get('jwtToken');
-    if (!jwtToken) {
-      console.error('JWT token is missing');
-      return null;
-    }
+    const jwtToken = getCookie('jwtToken');
 
     const response = await fetch("https://localhost:7103/Users/getUserInformationById", {
       method: "GET",

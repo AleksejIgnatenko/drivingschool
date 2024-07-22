@@ -1,13 +1,10 @@
 import Cookies from 'js-cookie';
 import { User } from '@/app/Models/UserModels/User';
+import { getCookie } from '@/app/Infrastructure/getCookie';
 
 export const fetchAddModeratorAsync = async (userId: string) => {
     try {
-        const jwtToken = Cookies.get('jwtToken');
-        if (!jwtToken) {
-            console.error('JWT token is missing');
-            return null;
-        }
+        const jwtToken = getCookie('jwtToken');
 
         const response = await fetch(`https://localhost:7103/Users/addModeratorRole/${userId}`, {
             method: "PUT",
@@ -29,11 +26,7 @@ export const fetchAddModeratorAsync = async (userId: string) => {
 
 export const fetchDeleteModeratorAsync = async (userId: string) => {
     try {
-        const jwtToken = Cookies.get('jwtToken');
-        if (!jwtToken) {
-            console.error('JWT token is missing');
-            return null;
-        }
+        const jwtToken = getCookie('jwtToken');
 
         const response = await fetch(`https://localhost:7103/Users/deleteModeratorRole/${userId}`, {
             method: "PUT",
