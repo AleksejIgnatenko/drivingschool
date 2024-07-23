@@ -36,7 +36,6 @@
 
 .container {
   background: transparent;
-  box-shadow: 0 0 10px rgb(255, 255, 255);
   color: #fff;
   border-radius: 12px;
   backdrop-filter: blur(7px);
@@ -48,6 +47,10 @@
   gap: 20px;
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.container:hover {
+  box-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
 .content {
