@@ -33,7 +33,7 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
           const roleElement = card?.querySelector("h3:nth-of-type(4)");
   
           if (userIdElement && userNameElement && emailElement && roleElement)  {
-            userIdElement.textContent = `Id: ${updatedUser.idUser}`;
+            userIdElement.textContent = `Id: ${updatedUser.id}`;
             userNameElement.textContent = `User name: ${updatedUser.userName}`;
             emailElement.textContent = `Email: ${updatedUser.email}`;
             roleElement.textContent = `Role: ${updatedUser.role}`;
@@ -47,6 +47,11 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
         }
       } catch (error) {
         console.error("Error adding moderator:", error);
+        // Hide the "Issue a Moderator" and "Delete a Moderator" buttons
+        hideButtons(user, buttons);
+
+        // Show the "Check Mark" and "Cancellation" buttons
+        showButtons(user, buttons)
       }
     }
   };
@@ -81,7 +86,7 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
           const roleElement = card?.querySelector("h3:nth-of-type(4)");
   
           if (userIdElement && userNameElement && emailElement && roleElement)  {
-            userIdElement.textContent = `Id: ${updatedUser.idUser}`;
+            userIdElement.textContent = `Id: ${updatedUser.id}`;
             userNameElement.textContent = `User name: ${updatedUser.userName}`;
             emailElement.textContent = `Email: ${updatedUser.email}`;
             roleElement.textContent = `Role: ${updatedUser.role}`;
@@ -95,6 +100,11 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
         }
       } catch (error) {
         console.error("Error deletion moderator:", error);
+        // Hide the "Issue a Moderator" and "Delete a Moderator" buttons
+        hideButtons(user, buttons);
+
+        // Show the "Check Mark" and "Cancellation" buttons
+        showButtons(user, buttons)
       }
     }
   };
@@ -135,7 +145,7 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
           const roleElement = card?.querySelector("h3:nth-of-type(4)");
   
           if (userIdElement && userNameElement && emailElement && roleElement)  {
-            userIdElement.textContent = `Id: ${updatedUser.idUser}`;
+            userIdElement.textContent = `Id: ${updatedUser.id}`;
             userNameElement.textContent = `User name: ${updatedUser.userName}`;
             emailElement.textContent = `Email: ${updatedUser.email}`;
             roleElement.textContent = `Role: ${updatedUser.role}`;

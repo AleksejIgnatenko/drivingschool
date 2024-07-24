@@ -1,10 +1,10 @@
 import { getCookie } from '@/app/Infrastructure/getCookie';
 
-export const isAdmin = async () => {
+export const isAdminOrModerator = async () => {
     try {
       const jwtToken = getCookie('jwtToken');
 
-        const response = await fetch("https://localhost:7103/Users/isAdmin", {
+        const response = await fetch("https://localhost:7103/Users/isAdminOrModerator", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -19,6 +19,6 @@ export const isAdmin = async () => {
       }
     } catch (error) {
       console.error("Error fetching:", error);
-      throw error;
+      return false;
     }
   };
