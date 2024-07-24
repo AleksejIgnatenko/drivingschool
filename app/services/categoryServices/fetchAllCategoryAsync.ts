@@ -1,11 +1,12 @@
-import { UserModel } from '@/app/Models/UserModel';
+import Cookies from 'js-cookie';
+import { CategoryModel } from '@/app/Models/CategoryModel';
 import { getCookie } from '@/app/Infrastructure/getCookie';
 
-export const fetchAllUsersAsync = async (): Promise<UserModel[] | null> => {
+export const fetchAllCategoryAsync = async (): Promise<CategoryModel[] | null> => {
   try {
     const jwtToken = getCookie('jwtToken');
 
-    const response = await fetch("https://localhost:7103/Users/getAllUsers", {
+    const response = await fetch("https://localhost:7103/Category/getAllCategory", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -14,13 +15,10 @@ export const fetchAllUsersAsync = async (): Promise<UserModel[] | null> => {
     });
 
     if (response.ok) {
-      const responseData = await response.json()
+      const responseData = await response.json();
       return responseData.map((data: any) => ({
         id: data.id,
-        userName: data.userName,
-        email: data.email,
-        role: data.role,
-        resultsTests: data.resultsTests,
+        nameCategory: data.nameCategory,
       }));
     } else {
       const errorMessage = await response.text();

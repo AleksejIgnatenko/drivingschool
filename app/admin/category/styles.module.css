@@ -1,0 +1,117 @@
+.backgroundContainer {
+    background-image: url('/images/Comet.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    min-height: 100vh; /* Change max-height to min-height */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+  }
+  
+  .cardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    flex-grow: 1; /* Add flex-grow to fill remaining space */
+  }
+  
+  .card {
+    flex-basis: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .container {
+    background: transparent;
+    color: #fff;
+    border-radius: 12px;
+    backdrop-filter: blur(7px);
+    width: 420px;
+    height: 400px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .container:hover {
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+  }
+  
+  .content {
+    justify-content: space-between; /* Distribute the content vertically */
+    align-items: center;
+    display: flex;
+    flex-direction: column; /* Arrange the content in a column */
+    width: 100%;
+    padding: 10px; /* Add some padding to the content */
+    overflow-y: auto; /* Add this line to enable vertical scrolling */
+    max-height: 380px; /* Adjust the max-height as needed */
+  }
+  
+  .container > div > input[type="text"] {
+    display: none;
+    width: 350px;
+    height: 40px;
+    background-color: rgba(250, 235, 215, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    color: white;
+    outline: none; /* Remove the default outline */
+    padding-left: 1em;
+  }
+  
+  .container > div > input[type="text"]:focus {
+      outline: 2px solid #afafaf; /* Add a white outline on focus */
+      outline-offset: 1px; /* Adjust the offset of the outline */
+  }
+  
+  .buttonContainer {
+    justify-content: center; /* Center the content vertically */
+    margin-top: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: row; /* Arrange the content in a row */
+    width: 100%;
+    gap: 10px; /* Add some space between the buttons */
+  }
+  
+  .buttonIssueModerator,
+  .buttonConfirmModerator,
+  .buttonCancellationModerator,
+  .buttonDeleteModerator,
+  .buttonConfirmDeleteModerator,
+  .buttonCancellationDeleteModerator,
+  .buttonNameChange,
+  .buttonConfirmNameChange,
+  .buttonCancellationNameChange {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-top: auto;
+  }
+  
+  .buttonConfirmModerator,
+  .buttonCancellationModerator,
+  .buttonConfirmDeleteModerator,
+  .buttonCancellationDeleteModerator,
+  .buttonConfirmNameChange,
+  .buttonCancellationNameChange {
+    display: none;
+  }

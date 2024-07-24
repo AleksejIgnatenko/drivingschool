@@ -2,29 +2,28 @@
 
 import styles from './styles.module.css';
 import { useEffect, useState, useRef } from "react";
-import { fetchAllUsersAsync } from '../../services/userServices/fetchAllUsersAsync';
-import { UserModel } from '@/app/Models/UserModel';
+import { CategoryModel } from '@/app/Models/CategoryModel';
+import { fetchAllCategoryAsync } from '@/app/services/categoryServices/fetchAllCategoryAsync';
 import Image from 'next/image';
-import { handleIssueModerator, handleAddModeratorRole, handleCancellation, handleDeleteModerator, handleDeleteModeratorRole, handleNameChange, handleNameChangeConfirm } from './script';
 
 export default function Users() {
   const hasBeenCalledRef = useRef(false);
-  const [userData, setUserData] = useState<UserModel[]>([]);
+  const [categoryData, setCategoryData] = useState<CategoryModel[]>([]);
 
   useEffect(() => {
     if (!hasBeenCalledRef.current) {
       hasBeenCalledRef.current = true;
 
-      const getAllUsersAsync = async () => { 
-        const users = await fetchAllUsersAsync();
-        if (users) {
-          setUserData(users);
+      const getAllCategoryAsync = async () => { 
+        const categories = await fetchAllCategoryAsync();
+        if (categories) {
+          setCategoryData(categories);
         } else {
           // Обработка случая, когда данные о пользователях недоступны
         }
       };
 
-      getAllUsersAsync();
+      getAllCategoryAsync();
     }
   }, []);
 
@@ -32,26 +31,19 @@ export default function Users() {
     <main className={styles.main}>
       <div className={styles.backgroundContainer}>
         <div className={styles.cardContainer}>
-          {userData.map((user, index) => (
-            <div key={index} className={styles.card} data-id={user.id}>
+          {categoryData.map((category, index) => (
+            <div key={index} className={styles.card} data-id={category.id}>
               <div className={styles.container}>
                 <div className={styles.content}>
-                  <h3 data-id={user.id}>Id: {user.id}</h3>
-                  <h3 id={`userName-${user.id}`}>User name: {user.userName}</h3>
+                  <h3 data-id={category.id}>Id: {category.id}</h3>
+                  <h3 id={`categoryName-${category.id}`}>Name category: {category.nameCategory}</h3>
                   <input
-                    id={`nameChangeInput-${user.id}`}
+                    id={`nameChangeInput-${category.id}`}
                     type="text"
-                    placeholder="New Username"
+                    placeholder="New category name"
                     className={styles.inputText}
                   />
-                  <h3>Email: {user.email}</h3>
-                  <h3>Role: {user.role}</h3>
-                  {userData[index]?.resultsTests && Object.entries(userData[index].resultsTests).map(([category, results], index) => (
-                    <div key={index}>
-                      <h3>{category}: {results.join(", ")}</h3>
-                    </div>
-                  ))}
-                  <div className={styles.buttonContainer}>
+                  {/* <div className={styles.buttonContainer}>
                     <button
                       className={styles.buttonIssueModerator}
                       title="Issue a Moderator"
@@ -109,7 +101,7 @@ export default function Users() {
                       onClick={(event) => handleCancellation(user, event)}>
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

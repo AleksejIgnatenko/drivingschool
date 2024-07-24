@@ -1,5 +1,5 @@
-export interface User{
-    idUser: string;
+export interface UserModel{
+    id: string;
     userName: string;
     email: string;
     role: string;

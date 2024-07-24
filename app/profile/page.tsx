@@ -3,11 +3,11 @@
 import styles from './styles.module.css'; // Убедитесь, что путь к файлу указан правильно
 import Link from 'next/link';
 import { useEffect, useState, useRef } from "react";
-import { getUserByIdAsync, Users } from '../services/userServices/getUserInfornation';
+import { getUserByIdAsync, User } from '../services/userServices/getUserInfornation';
 
 export default function Login() {
   const hasBeenCalledRef = useRef(false);
-  const [userData, setUserData] = useState<Users | null>(null);
+  const [userData, setUserData] = useState<User | null>(null);
 
   useEffect(() => {
     if (!hasBeenCalledRef.current) {

@@ -1,4 +1,4 @@
-import { User } from '@/app/Models/UserModels/User';
+import { UserModel } from '@/app/Models/UserModel';
 import { getCookie } from '@/app/Infrastructure/getCookie';
 
 export const fetchUserNameChangeAsync = async (userId: string, newUserName: string) => {
@@ -16,7 +16,7 @@ export const fetchUserNameChangeAsync = async (userId: string, newUserName: stri
 
         if (response.ok) {
             const responseData = await response.json();
-            return responseData as User;
+            return responseData as UserModel;
         }
     } catch (error) {
         console.error("Error fetching:", error);

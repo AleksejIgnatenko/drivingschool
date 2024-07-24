@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 import { fetchAddModeratorAsync, fetchDeleteModeratorAsync } from '@/app/services/userServices/fetchAddDeleteModeratorRoleAsync';
 import { fetchUserNameChangeAsync } from '@/app/services/userServices/fetchUserNameChangeAsync';
-import { User } from '@/app/Models/UserModels/User';
+import { UserModel } from '@/app/Models/UserModel';
 
 export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
@@ -18,13 +18,13 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
     }
   };
 
-  export const handleAddModeratorRole = async (user:User, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleAddModeratorRole = async (user:UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
     const card = event.currentTarget.closest(`.${styles.card}`) as HTMLElement | null;
   
     if (buttons) {  
       try {
-        const updatedUser = await fetchAddModeratorAsync(user.idUser);
+        const updatedUser = await fetchAddModeratorAsync(user.id);
         if (updatedUser) {
           // Update the user's card
           const userIdElement = card?.querySelector("h3:nth-of-type(1)");
@@ -66,13 +66,13 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
     }
   };
 
-  export const handleDeleteModeratorRole = async (user: User, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleDeleteModeratorRole = async (user: UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
     const card = event.currentTarget.closest(`.${styles.card}`) as HTMLElement | null;
   
     if (buttons) {
       try {
-        const updatedUser = await fetchDeleteModeratorAsync(user.idUser);
+        const updatedUser = await fetchDeleteModeratorAsync(user.id);
         if (updatedUser) {
           // Update the user's card
           const userIdElement = card?.querySelector("h3:nth-of-type(1)");
@@ -99,9 +99,9 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
     }
   };
 
-  export const handleNameChange = async (user: User, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const input = document.getElementById(`nameChangeInput-${user.idUser}`) as HTMLInputElement;
-    const h3UserName = document.getElementById(`userName-${user.idUser}`);
+  export const handleNameChange = async (user: UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const input = document.getElementById(`nameChangeInput-${user.id}`) as HTMLInputElement;
+    const h3UserName = document.getElementById(`userName-${user.id}`);
     const buttons = event.currentTarget.parentNode?.children;
   
     if (buttons && input && h3UserName) {
@@ -119,13 +119,13 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
     }
   };
 
-  export const handleNameChangeConfirm = async (user: User, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const input = document.getElementById(`nameChangeInput-${user.idUser}`) as HTMLInputElement;
+  export const handleNameChangeConfirm = async (user: UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const input = document.getElementById(`nameChangeInput-${user.id}`) as HTMLInputElement;
     const buttons = event.currentTarget.parentNode?.children;
     const card = event.currentTarget.closest(`.${styles.card}`) as HTMLElement | null;
     if (buttons && input) {
       try{
-        const updatedUser = await fetchUserNameChangeAsync(user.idUser, input.value);
+        const updatedUser = await fetchUserNameChangeAsync(user.id, input.value);
         // Hide the "Issue a Moderator" and "Delete a Moderator" buttons
         if (updatedUser) {
           // Update the user's card
@@ -156,7 +156,7 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
     }
   };
   
-  export const handleCancellation = async (user: User, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleCancellation = async (user: UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
   
     if (buttons) {
@@ -168,19 +168,19 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
     }
   };
 
-  const hideButtons = (user: User, buttons: HTMLCollection) => {
+  const hideButtons = (user: UserModel, buttons: HTMLCollection) => {
     (buttons[1] as HTMLElement).style.display = 'none';
     (buttons[2] as HTMLElement).style.display = 'none';
     (buttons[4] as HTMLElement).style.display = 'none';
     (buttons[5] as HTMLElement).style.display = 'none';
     (buttons[7] as HTMLElement).style.display = 'none';
     (buttons[8] as HTMLElement).style.display = 'none';
-    const input = document.getElementById(`nameChangeInput-${user.idUser}`) as HTMLInputElement;
+    const input = document.getElementById(`nameChangeInput-${user.id}`) as HTMLInputElement;
     input.style.display = 'none';
   };
   
-  const showButtons = (user: User, buttons: HTMLCollection) => {
-    const h3UserName = document.getElementById(`userName-${user.idUser}`);
+  const showButtons = (user: UserModel, buttons: HTMLCollection) => {
+    const h3UserName = document.getElementById(`userName-${user.id}`);
     h3UserName!.style.display = 'inline-block';
     (buttons[0] as HTMLElement).style.display = 'inline-block';
     (buttons[3] as HTMLElement).style.display = 'inline-block';
