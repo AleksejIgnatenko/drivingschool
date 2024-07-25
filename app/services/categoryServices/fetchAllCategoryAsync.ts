@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie';
 import { CategoryModel } from '@/app/Models/CategoryModel';
 import { getCookie } from '@/app/Infrastructure/getCookie';
 
