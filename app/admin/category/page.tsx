@@ -13,24 +13,29 @@ export default function Category() {
   const [isAddCategoryFormVisible, setIsFormVisible] = useState(false);
 
   useEffect(() => {
-    if (!hasBeenCalledRef.current) {
-      hasBeenCalledRef.current = true;
+      if (!hasBeenCalledRef.current) {
+          hasBeenCalledRef.current = true;
 
-      const getAllCategoryAsync = async () => { 
-        const categories = await fetchAllCategoryAsync();
-        if (categories) {
-          setCategoryData(categories);
-        } else {
-          // Обработка случая, когда данные о пользователях недоступны
-        }
-      };
-
-      getAllCategoryAsync();
-    }
+          getAllCategoryAsync();
+      }
   }, []);
 
+  const getAllCategoryAsync = async () => { 
+    const categories = await fetchAllCategoryAsync();
+    if (categories) {
+      setCategoryData(categories);
+    } else {
+      // Обработка случая, когда данные о категориях недоступны
+    }
+  };
+
   const toggleFormVisibility = () => {
-    setIsFormVisible(!isAddCategoryFormVisible);
+      setIsFormVisible(!isAddCategoryFormVisible);
+  };
+
+  const addNewCategory = async () => { 
+      await addCategory();
+      getAllCategoryAsync();
   };
 
   return (
@@ -57,7 +62,7 @@ export default function Category() {
                 />
                 <i className='bx bx-user-circle'></i>
               </div>
-                <input type="button" value="Add category" className={styles.buttonAddСategory} onClick={addCategory}/>
+                <input type="button" value="Add category" className={styles.buttonAddСategory} onClick={addNewCategory}/>
                 <input type="button" value="Exit" className={styles.buttonBack} onClick={toggleFormVisibility}/>
             </div>
           </div>
