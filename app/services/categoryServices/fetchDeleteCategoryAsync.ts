@@ -1,24 +1,19 @@
-import { CategoryModel } from '@/app/Models/CategoryModel';
 import { getCookie } from '@/app/Infrastructure/getCookie';
 
-export const fetchGetAllCategoryAsync = async (): Promise<CategoryModel[] | null> => {
+export const fetchDeleteCategoryAsync = async (id: string) => {
   try {
     const jwtToken = getCookie('jwtToken');
 
-    const response = await fetch("https://localhost:7103/Category/getAllCategory", {
-      method: "GET",
+    const response = await fetch(`https://localhost:7103/Category/${id}`, {
+      method: "DELETE",
       headers: {
         "content-type": "application/json",
         "Authorization": `Bearer ${jwtToken}`,
       },
     });
-
+    
     if (response.ok) {
-      const responseData = await response.json();
-      return responseData.map((data: any) => ({
-        id: data.id,
-        nameCategory: data.nameCategory,
-      }));
+      return true;
     } else {
       const errorMessage = await response.text();
       console.error('Error fetching user information:', errorMessage);

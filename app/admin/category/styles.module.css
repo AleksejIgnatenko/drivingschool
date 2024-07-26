@@ -92,7 +92,6 @@
 .buttonAddСategory {
   width: 360px;
   height: 46px;
-
   border-radius: 15px;
   background-color: #fff;
   font-size: 18px;
@@ -104,7 +103,6 @@
 .buttonBack {
   width: 360px;
   height: 46px;
-
   border-radius: 15px;
   background-color: transparent;
   font-size: 18px;
@@ -128,31 +126,31 @@
   flex-grow: 1; /* Add flex-grow to fill remaining space */
 }
   
-  .card {
-    flex-basis: 8%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    font-family: "Poppins", sans-serif;
-  }
+.card {
+  flex-basis: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: "Poppins", sans-serif;
+}
   
-  .container {
-    background: transparent;
-    color: #fff;
-    border-radius: 12px;
-    backdrop-filter: blur(7px);
-    width: 420px;
-    height: 400px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    border-radius: 10px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-  }
+.container {
+  background: transparent;
+  color: #fff;
+  border-radius: 12px;
+  backdrop-filter: blur(7px);
+  width: 420px;
+  height: 400px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
   
   .container:hover {
     box-shadow: 0 0 10px rgb(255, 255, 255);
@@ -210,7 +208,7 @@
     border: none;
     padding: 0;
     cursor: pointer;
-    margin-top: auto;
+    margin-top: 15px;
   }
 
   .openFormAddCategory {
