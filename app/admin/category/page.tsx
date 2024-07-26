@@ -42,11 +42,14 @@ export default function Category() {
       await handleUpdateCategoryConfirm(category, event);
   };
 
-  const deleteCategoryConfirm = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-      await handleDeleteCategoryConfirm(category, event);
-      await getAllCategoryAsync();
-  };
-
+const deleteCategoryConfirm = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+  await handleDeleteCategoryConfirm(category, event);
+  
+  // Очистить состояние categoryData
+  setCategoryData([]);
+  
+  await getAllCategoryAsync();
+};
   return (
   <main className={styles.main}>
     <div className={`${styles.backgroundContainer} ${isAddCategoryFormVisible ? styles.overlayActive : ''}`}>
