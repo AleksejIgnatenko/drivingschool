@@ -17,22 +17,24 @@ export default function Login() {
             </div>
           </div>
         </Link>
-        <Link href={"/admin/category"}>
+        <Link href={"/admin/categories"}>
           <div className={styles.card}>
             <div className={styles.container}>
               <div className={styles.сontent}>
-                <h1>Category</h1>
+                <h1>Categories</h1>
               </div>
             </div>
           </div>
         </Link>
-        <div className={styles.card}>
-          <div className={styles.container}>
-            <div className={styles.сontent}>
-              <h1>Users</h1>
+        <Link href={"/admin/tests"}>
+          <div className={styles.card}>
+            <div className={styles.container}>
+              <div className={styles.сontent}>
+                <h1>Tests</h1>
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
         <div className={styles.card}>
           <div className={styles.container}>
             <div className={styles.сontent}>
