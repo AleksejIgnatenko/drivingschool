@@ -1,4 +1,4 @@
-import { TestModel } from '@/app/Models/TestModel';
+import { TestModel } from '@/app/Models/TestModel/TestModel';
 import { getCookie } from '@/app/Infrastructure/getCookie';
 
 export const fetchGetCategoryTestsAsync = async (idcategory: string): Promise<TestModel[] | null> => {

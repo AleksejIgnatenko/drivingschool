@@ -5,11 +5,11 @@ import { fetchDeleteCategoryAsync } from "@/app/services/categoryServices/fetchD
 import styles from './styles.module.css';
 
 export const addCategory = async () => {
-    const input = document.getElementById('categoryName') as HTMLInputElement;
-    const result = await fetchAddNewCategory(input.value); // Добавляем await здесь
+    const inputCategoryName = document.getElementById('categoryName') as HTMLInputElement;
+    const result = await fetchAddNewCategory(inputCategoryName.value); // Добавляем await здесь
 
     if (result) {
-        input.value = '';
+      inputCategoryName.value = '';
     }
 };
 

@@ -25,7 +25,7 @@
     z-index: 1;
   }
   
-  .addCategoryForm {
+  .addTestForm {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -49,7 +49,7 @@
   color: white;
 }
 
-.addCategoryContainer {
+.addTestContainer {
   background: transparent;
   box-shadow: 0 0 10px rgb(255, 255, 255);
   color: #fff;
@@ -89,7 +89,7 @@
   right: 40px;
 }
 
-.buttonAddСategory {
+.buttonAddTest {
   width: 360px;
   height: 46px;
   border-radius: 15px;
@@ -167,9 +167,8 @@
     max-height: 380px; /* Adjust the max-height as needed */
   }
   
-  .container > div > input[type="text"] {
-    display: none;
-    width: 350px;
+  .txtBox input[type="text"] {
+    width: 360px;
     height: 40px;
     background-color: rgba(250, 235, 215, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -178,6 +177,37 @@
     outline: none; /* Remove the default outline */
     padding-left: 1em;
   }
+  
+  .txtBox select.dropdownInput {
+    width: 360px;
+    height: 40px;
+    background-color: rgba(250, 235, 215, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    color: white;
+    outline: none;
+    padding-left: 1em;
+    position: relative; /* Чтобы позиционировать псевдоэлемент */
+}
+
+.txtBox select.dropdownInput::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid white; /* Цвет стрелки */
+    background-color: rgba(255, 0, 0, 0.1); /* Цвет фона заднего элемента */
+}
+
+.txtBox select.dropdownInput option {
+    background-color: rgba(250, 235, 215, 0.1);
+    color: black; /* Цвет текста для опций списка */
+}
   
   .container > div > input[type="text"]:focus {
       outline: 2px solid #afafaf; /* Add a white outline on focus */
@@ -203,7 +233,7 @@
   .buttonNameChange,
   .buttonConfirmNameChange,
   .buttonCancellationNameChange,
-  .openFormAddCategory {
+  .openFormAddTest {
     background-color: transparent;
     border: none;
     padding: 0;
@@ -211,7 +241,7 @@
     margin-top: 15px;
   }
 
-  .openFormAddCategory {
+  .openFormAddTest {
     margin-bottom: 25px;
   }
   
