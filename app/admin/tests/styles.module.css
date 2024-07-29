@@ -247,7 +247,7 @@
   
   .buttonUpdateTest,
   .buttonConfirmUpdateTest,
-  .buttonCancellation,
+  .buttonCancellationUpdateTest,
   .buttonDeleteTest,
   .buttonConfirmDeleteTest,
   .buttonCancellationDeleteTest,
@@ -264,7 +264,7 @@
   }
   
   .buttonConfirmUpdateTest,
-  .buttonCancellation,
+  .buttonCancellationUpdateTest,
   .buttonConfirmDeleteTest,
   .buttonCancellationDeleteTest {
     display: none;

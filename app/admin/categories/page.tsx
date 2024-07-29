@@ -77,7 +77,7 @@ export default function Categories() {
                 <i className='bx bx-user-circle'></i>
               </div>
                 <input type="button" value="Add category" className={styles.buttonAddСategory} onClick={handleAddCategory}/>
-                <input type="button" value="Exit" className={styles.buttonBack} onClick={toggleFormVisibility}/>
+                <input type="button" value="Back" className={styles.buttonBack} onClick={toggleFormVisibility}/>
             </div>
           </div>
         </form>
@@ -99,40 +99,40 @@ export default function Categories() {
 
                   <div className={styles.buttonContainer}>
                     <button
-                      className={styles.buttonIssueModerator}
+                      className={styles.buttonUpdateCategory}
                       title="Update the category"
                       onClick={(event) => handleUpdateCategory(category, event)}
                     >
                       <Image src="/images/Pencil.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
-                      className={styles.buttonConfirmModerator} 
+                      className={styles.buttonConfirmUpdateCategory} 
                       title="Confirm update"
                       onClick={(event) => updateCategoryConfirm(category, event)}>
                       <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
-                      className={styles.buttonCancellationModerator} 
+                      className={styles.buttonCancellationUpdateCategory} 
                       title="Cancellation update"
                       onClick={(event) => handleCancellation(category, event)}>
                         <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                     </button>
 
                     <button
-                      className={styles.buttonIssueModerator}
+                      className={styles.buttonDeleteCategory}
                       title="Delete the category"
                       onClick={handleDeleteCategory}
                     >
                       <Image src="/images/Delete.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
-                      className={styles.buttonConfirmModerator} 
+                      className={styles.buttonConfirmDeleteCategory} 
                       title="Confirm delete"
                       onClick={(event) => deleteCategoryConfirm(category, event)}>
                       <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
-                      className={styles.buttonCancellationModerator} 
+                      className={styles.buttonCancellationDeleteCategory} 
                       title="Cancellation delete"
                       onClick={(event) => handleCancellation(category, event)}>
                         <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />

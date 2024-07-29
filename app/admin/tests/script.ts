@@ -89,7 +89,7 @@ export const handleUpdateTest = async (test: TestModel, event: React.MouseEvent<
     }
   };
 
-  export const handleDeleteCategory = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleDeleteTest = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
   
     if (buttons) {
@@ -103,7 +103,7 @@ export const handleUpdateTest = async (test: TestModel, event: React.MouseEvent<
     }
   };
 
-  export const handleDeleteCategoryConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleDeleteTestConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
     if (buttons) {
       try{

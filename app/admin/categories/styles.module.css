@@ -194,12 +194,12 @@
     gap: 10px; /* Add some space between the buttons */
   }
   
-  .buttonIssueModerator,
-  .buttonConfirmModerator,
-  .buttonCancellationModerator,
-  .buttonDeleteModerator,
-  .buttonConfirmDeleteModerator,
-  .buttonCancellationDeleteModerator,
+  .buttonUpdateCategory,
+  .buttonConfirmUpdateCategory,
+  .buttonCancellationUpdateCategory,
+  .buttonDeleteCategory,
+  .buttonConfirmDeleteCategory,
+  .buttonCancellationDeleteCategory,
   .buttonNameChange,
   .buttonConfirmNameChange,
   .buttonCancellationNameChange,
@@ -216,10 +216,10 @@
     margin-bottom: 25px;
   }
   
-  .buttonConfirmModerator,
-  .buttonCancellationModerator,
-  .buttonConfirmDeleteModerator,
-  .buttonCancellationDeleteModerator,
+  .buttonConfirmUpdateCategory,
+  .buttonCancellationUpdateCategory,
+  .buttonConfirmDeleteCategory,
+  .buttonCancellationDeleteCategory,
   .buttonConfirmNameChange,
   .buttonCancellationNameChange {
     display: none;

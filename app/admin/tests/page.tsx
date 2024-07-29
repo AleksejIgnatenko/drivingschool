@@ -7,7 +7,7 @@ import { CategoryModel } from '@/app/Models/CategoryModel';
 import { fetchGetAllTestsAsync } from '@/app/services/testServices/fetchGetAllTestsAsync';
 import { fetchGetAllCategoryAsync } from '@/app/services/categoryServices/fetchGetAllCategoryAsync';
 import Image from 'next/image';
-import { addTest, handleUpdateTest, handleUpdateTestConfirm, handleDeleteCategory, handleDeleteCategoryConfirm, handleCancellation } from './script';
+import { addTest, handleUpdateTest, handleUpdateTestConfirm, handleDeleteTest, handleDeleteTestConfirm, handleCancellation } from './script';
 
 export default function Tests() {
   const hasBeenCalledRef = useRef(false);
@@ -51,8 +51,8 @@ export default function Tests() {
       await getAllTestsAsync();
   };
 
-const deleteCategoryConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-  await handleDeleteCategoryConfirm(test, event);
+const deleteTestConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+  await handleDeleteTestConfirm(test, event);
   
   // Очистить состояние categoryData
   setTestData([]);
@@ -95,7 +95,7 @@ const deleteCategoryConfirm = async (test: TestModel, event: React.MouseEvent<HT
                 <i className='bx bx-user-circle'></i>
               </div>
               <input type="button" value="Add test" className={styles.buttonAddTest}onClick={handleAddTest} />
-              <input type="button" value="Exit" className={styles.buttonBack} onClick={toggleFormVisibility}/>
+              <input type="button" value="Back" className={styles.buttonBack} onClick={toggleFormVisibility}/>
             </div>
           </div>
         </form>
@@ -139,7 +139,7 @@ const deleteCategoryConfirm = async (test: TestModel, event: React.MouseEvent<HT
                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
-                    className={styles.buttonCancellation} 
+                    className={styles.buttonCancellationUpdateTest} 
                     title="Cancellation update"
                     onClick={(event) => handleCancellation(test, event)}
                   >
@@ -148,15 +148,15 @@ const deleteCategoryConfirm = async (test: TestModel, event: React.MouseEvent<HT
 
                   <button
                     className={styles.buttonDeleteTest}
-                    title="Delete the category"
-                    onClick={handleDeleteCategory}
+                    title="Delete the test"
+                    onClick={handleDeleteTest}
                   >
                     <Image src="/images/Delete.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonConfirmDeleteTest} 
                     title="Confirm delete"
-                    onClick={(event) => deleteCategoryConfirm(test, event)}
+                    onClick={(event) => deleteTestConfirm(test, event)}
                   >
                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
