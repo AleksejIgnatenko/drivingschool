@@ -43,14 +43,15 @@ export default function Categories() {
       await handleUpdateCategoryConfirm(category, event);
   };
 
-const deleteCategoryConfirm = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-  await handleDeleteCategoryConfirm(category, event);
-  
-  // Очистить состояние categoryData
-  setCategoryData([]);
-  
-  await getAllCategoryAsync();
-};
+  const deleteCategoryConfirm = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+    await handleDeleteCategoryConfirm(category, event);
+    
+    // Очистить состояние categoryData
+    setCategoryData([]);
+    
+    await getAllCategoryAsync();
+  };
+
   return (
   <main className={styles.main}>
     <div className={`${styles.backgroundContainer} ${isAddCategoryFormVisible ? styles.overlayActive : ''}`}>
@@ -84,7 +85,6 @@ const deleteCategoryConfirm = async (category: CategoryModel, event: React.Mouse
 
       <div className={styles.cardContainer}>
         {categoryData.map((category, index) => (
-          <Link key={category.id} href={`/admin/categoryTests?id=${category.id}`}>
             <div key={index} className={styles.card} data-id={category.id}>
               <div className={styles.container}>
                 <div className={styles.content}>
@@ -137,11 +137,14 @@ const deleteCategoryConfirm = async (category: CategoryModel, event: React.Mouse
                       onClick={(event) => handleCancellation(category, event)}>
                         <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                     </button>
+
+                    <Link key={category.id} href={`/admin/categoryTests?id=${category.id}`}>
+                      <Image src="/images/Test.png" alt="Описание изображения" height={20} width={20} className={styles.categoryTests} />
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
-          </Link>
         ))}
       </div>
     </div>

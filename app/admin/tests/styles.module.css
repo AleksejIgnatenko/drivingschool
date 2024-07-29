@@ -178,7 +178,8 @@
     padding-left: 1em;
   }
   
-  .txtBox select.dropdownInput {
+  .txtBox select.dropdown,
+  .dropdownUpdateCategory {
     width: 360px;
     height: 40px;
     background-color: rgba(250, 235, 215, 0.1);
@@ -190,7 +191,8 @@
     position: relative; /* Чтобы позиционировать псевдоэлемент */
 }
 
-.txtBox select.dropdownInput::after {
+.txtBox select.dropdown::after,
+.dropdownUpdateCategory::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -204,11 +206,30 @@
     background-color: rgba(255, 0, 0, 0.1); /* Цвет фона заднего элемента */
 }
 
-.txtBox select.dropdownInput option {
+.txtBox select.dropdown option,
+.dropdownUpdateCategory option {
     background-color: rgba(250, 235, 215, 0.1);
     color: black; /* Цвет текста для опций списка */
 }
-  
+
+.dropdownUpdateCategory {
+  display: none;
+  width: 350px;
+  margin-bottom: 20px;
+}
+
+.container > div > input[type="text"] {
+  display: none;
+  width: 350px;
+  height: 40px;
+  background-color: rgba(250, 235, 215, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  color: white;
+  outline: none; /* Remove the default outline */
+  padding-left: 1em;
+}
+
   .container > div > input[type="text"]:focus {
       outline: 2px solid #afafaf; /* Add a white outline on focus */
       outline-offset: 1px; /* Adjust the offset of the outline */
@@ -224,15 +245,12 @@
     gap: 10px; /* Add some space between the buttons */
   }
   
-  .buttonIssueModerator,
-  .buttonConfirmModerator,
-  .buttonCancellationModerator,
-  .buttonDeleteModerator,
-  .buttonConfirmDeleteModerator,
-  .buttonCancellationDeleteModerator,
-  .buttonNameChange,
-  .buttonConfirmNameChange,
-  .buttonCancellationNameChange,
+  .buttonUpdateTest,
+  .buttonConfirmUpdateTest,
+  .buttonCancellation,
+  .buttonDeleteTest,
+  .buttonConfirmDeleteTest,
+  .buttonCancellationDeleteTest,
   .openFormAddTest {
     background-color: transparent;
     border: none;
@@ -245,11 +263,9 @@
     margin-bottom: 25px;
   }
   
-  .buttonConfirmModerator,
-  .buttonCancellationModerator,
-  .buttonConfirmDeleteModerator,
-  .buttonCancellationDeleteModerator,
-  .buttonConfirmNameChange,
-  .buttonCancellationNameChange {
+  .buttonConfirmUpdateTest,
+  .buttonCancellation,
+  .buttonConfirmDeleteTest,
+  .buttonCancellationDeleteTest {
     display: none;
   }

@@ -203,7 +203,8 @@
   .buttonNameChange,
   .buttonConfirmNameChange,
   .buttonCancellationNameChange,
-  .openFormAddCategory {
+  .openFormAddCategory,
+  .categoryTests {
     background-color: transparent;
     border: none;
     padding: 0;

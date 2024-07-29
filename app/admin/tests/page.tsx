@@ -7,7 +7,7 @@ import { CategoryModel } from '@/app/Models/CategoryModel';
 import { fetchGetAllTestsAsync } from '@/app/services/testServices/fetchGetAllTestsAsync';
 import { fetchGetAllCategoryAsync } from '@/app/services/categoryServices/fetchGetAllCategoryAsync';
 import Image from 'next/image';
- import { addTest } from './script';
+import { addTest, handleUpdateTest, handleUpdateTestConfirm, handleDeleteCategory, handleDeleteCategoryConfirm, handleCancellation } from './script';
 
 export default function Tests() {
   const hasBeenCalledRef = useRef(false);
@@ -51,18 +51,14 @@ export default function Tests() {
       await getAllTestsAsync();
   };
 
-// const updateTestConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-//       await handleUpdateCategoryConfirm(test, event);
-// };
-
-// const deleteCategoryConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-//   await handleDeleteCategoryConfirm(test, event);
+const deleteCategoryConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+  await handleDeleteCategoryConfirm(test, event);
   
-//   // Очистить состояние categoryData
-//   setTestData([]);
+  // Очистить состояние categoryData
+  setTestData([]);
   
-//   await getAllTestsAsync();
-// };
+  await getAllTestsAsync();
+};
 
   return (
   <main className={styles.main}>
@@ -81,7 +77,7 @@ export default function Tests() {
             <div className={styles.addTestContainer}>
               <h1>Add test</h1>
               <div className={styles.txtBox}>
-                <select id="categories" className={`${styles.dropdown} ${styles.dropdownInput}`}>
+                <select id="categories" className={`${styles.dropdown}`}>
                   {categoryData.map((category) => (
                     <option key={category.id} value={category.id}>
                       {category.nameCategory}
@@ -113,54 +109,65 @@ export default function Tests() {
                 <h3 data-id={test.id}>Id: {test.id}</h3>
                 <h3 id={`categoryName-${test.id}`}>Name category: {test.nameCategory}</h3>
                 <h3 id={`testName-${test.id}`}>Name test: {test.nameTest}</h3>
-                {/* <input
-                  id={`categoryNameInput-${test.id}`}
+                <select id={`dropdownCategories-${test.id}`} className={`${styles.dropdownUpdateCategory}`}>
+                  {categoryData.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.nameCategory}
+                    </option>
+                  ))}
+                </select>
+                <input
+                  id={`updateTestNameInput-${test.id}`}
                   type="text"
                   placeholder="New test name"
                   className={styles.inputText}
-                /> */}
+                />
 
-                {/* <div className={styles.buttonContainer}>
+                <div className={styles.buttonContainer}>
                   <button
-                    className={styles.buttonIssueModerator}
-                    title="Update the category"
-                    onClick={(event) => handleUpdateCategory(category, event)}
+                    className={styles.buttonUpdateTest}
+                    title="Update the test"
+                    onClick={(event) => handleUpdateTest(test, event)}
                   >
                     <Image src="/images/Pencil.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
-                    className={styles.buttonConfirmModerator} 
+                    className={styles.buttonConfirmUpdateTest} 
                     title="Confirm update"
-                    onClick={(event) => updateCategoryConfirm(category, event)}>
+                    onClick={(event) => handleUpdateTestConfirm(test, event)}
+                  >
                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
-                    className={styles.buttonCancellationModerator} 
+                    className={styles.buttonCancellation} 
                     title="Cancellation update"
-                    onClick={(event) => handleCancellation(category, event)}>
+                    onClick={(event) => handleCancellation(test, event)}
+                  >
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>
 
                   <button
-                    className={styles.buttonIssueModerator}
+                    className={styles.buttonDeleteTest}
                     title="Delete the category"
                     onClick={handleDeleteCategory}
                   >
                     <Image src="/images/Delete.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
-                    className={styles.buttonConfirmModerator} 
+                    className={styles.buttonConfirmDeleteTest} 
                     title="Confirm delete"
-                    onClick={(event) => deleteCategoryConfirm(category, event)}>
+                    onClick={(event) => deleteCategoryConfirm(test, event)}
+                  >
                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
-                    className={styles.buttonCancellationModerator} 
+                    className={styles.buttonCancellationDeleteTest} 
                     title="Cancellation delete"
-                    onClick={(event) => handleCancellation(category, event)}>
+                    onClick={(event) => handleCancellation(test, event)}
+                  >
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>
-                </div> */}
+                </div>
               </div>
             </div>
           </div>
