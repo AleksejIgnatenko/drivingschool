@@ -35,13 +35,15 @@ export default function Login() {
             </div>
           </div>
         </Link>
-        <div className={styles.card}>
-          <div className={styles.container}>
-            <div className={styles.сontent}>
-              <h1>Users</h1>
+        <Link href={"/admin/questions"}>
+          <div className={styles.card}>
+            <div className={styles.container}>
+              <div className={styles.сontent}>
+                <h1>Questions</h1>
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
       <div className={styles.secondRow}>
         <div className={styles.card}>
