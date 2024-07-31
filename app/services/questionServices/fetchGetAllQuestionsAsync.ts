@@ -15,9 +15,8 @@ export const fetchGetAllQuestionsAsync = async (): Promise<QuestionModel[] | nul
 
     if (response.ok) {
       const responseData = await response.json();
-      console.log(responseData);
       return responseData.map((data: any) => ({
-        id: data.idQuestion,
+        id: data.id,
         nameTest: data.nameTest,
         questionText: data.questionText,
         linkPhoto: data.linkPhoto,

@@ -11,8 +11,6 @@ export const fetchUpdateTest = async (testId: string, categoryId: string, newTes
         nameTest: newTestName
       };
 
-      console.log(testModelRequest.idCategory, testModelRequest.nameTest, testId);
-
     const response = await fetch(`https://localhost:7103/Test/${testId}`, {
       method: "PUT",
       headers: {

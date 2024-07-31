@@ -7,7 +7,7 @@ import { QuestionModel } from '@/app/Models/QuestionModel/QuestionModel';
 import { fetchGetAllQuestionsAsync } from '@/app/services/questionServices/fetchGetAllQuestionsAsync';
 import { fetchGetAllTestsAsync } from '@/app/services/testServices/fetchGetAllTestsAsync';
 import Image from 'next/image';
-// import { addTest, handleUpdateTest, handleUpdateTestConfirm, handleDeleteTest, handleDeleteTestConfirm, handleCancellation } from './script';
+import { addQuestion, handleUpdateQuestion, handleUpdateQuestionConfirm, handleCancellation } from './script';
 
 export default function Questions() {
   const hasBeenCalledRef = useRef(false);
@@ -46,10 +46,10 @@ export default function Questions() {
       setIsFormVisible(!isAddQuestionFormVisible);
   };
 
-//   const handleAddTest = async () => { 
-//       await addQuestion();
-//       await getAllQuestionAsync();
-//   };
+  const handleAddQuestion = async () => { 
+      await addQuestion();
+      await getAllQuestionAsync();
+  };
 
 // const deleteTestConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
 //   await handleDeleteTestConfirm(test, event);
@@ -142,8 +142,7 @@ export default function Questions() {
                 />
                 <i className='bx bx-user-circle'></i>
               </div>
-              <input type="button" value="Add question" className={styles.buttonAddQuestion} 
-              // onClick={handleAddTest} 
+              <input type="button" value="Add question" className={styles.buttonAddQuestion} onClick={handleAddQuestion} 
               />
               <input type="button" value="Back" className={styles.buttonBack} onClick={toggleFormVisibility}/>
             </div>
@@ -158,13 +157,6 @@ export default function Questions() {
               <div className={styles.content}>
                 <h3 data-id={question.id}>Id: {question.id}</h3>
                 <h3 id={`testName-${question.id}`}>Name test: {question.nameTest}</h3>
-                <h3 id={`questionText-${question.id}`}>Question text: {question.questionText}</h3>
-                <h3 id={`linkPhoto-${question.id}`}>Link photo: {question.linkPhoto}</h3>
-                <h3 id={`answer1-${question.id}`}>Answer 1: {question.answer1}</h3>
-                <h3 id={`answer2-${question.id}`}>Answer 2: {question.answer2}</h3>
-                <h3 id={`answer3-${question.id}`}>Answer 3: {question.answer3}</h3>
-                <h3 id={`answer4-${question.id}`}>Answer 4: {question.answer4}</h3>
-                <h3 id={`correctAnswer-${question.id}`}>Correct answer: {question.correctAnswer}</h3>
                 <select id={`dropdownTest-${question.id}`} className={`${styles.dropdownUpdateTest}`}>
                   {testData.map((test) => (
                     <option key={test.id} value={test.id}>
@@ -172,10 +164,53 @@ export default function Questions() {
                     </option>
                   ))}
                 </select>
+                <h3 id={`questionText-${question.id}`}>Question text: {question.questionText}</h3>
                 <input
                   id={`updateQuestionNameInput-${question.id}`}
                   type="text"
                   placeholder="New question name"
+                  className={styles.inputText}
+                />
+                <h3 id={`linkPhoto-${question.id}`}>Link photo: {question.linkPhoto}</h3>
+                <input
+                  id={`updateLinkPhotoInput-${question.id}`}
+                  type="text"
+                  placeholder="New link photo"
+                  className={styles.inputText}
+                />
+                <h3 id={`answer1-${question.id}`}>Answer 1: {question.answer1}</h3>
+                <input
+                  id={`updateAnswer1Input-${question.id}`}
+                  type="text"
+                  placeholder="New answer 1"
+                  className={styles.inputText}
+                />
+                <h3 id={`answer2-${question.id}`}>Answer 2: {question.answer2}</h3>
+                <input
+                  id={`updateAnswer2Input-${question.id}`}
+                  type="text"
+                  placeholder="New answer 2"
+                  className={styles.inputText}
+                />
+                <h3 id={`answer3-${question.id}`}>Answer 3: {question.answer3}</h3>
+                <input
+                  id={`updateAnswer3Input-${question.id}`}
+                  type="text"
+                  placeholder="New answer 3"
+                  className={styles.inputText}
+                />
+                <h3 id={`answer4-${question.id}`}>Answer 4: {question.answer4}</h3>
+                <input
+                  id={`updateAnswer4Input-${question.id}`}
+                  type="text"
+                  placeholder="New answer 4"
+                  className={styles.inputText}
+                />
+                <h3 id={`correctAnswer-${question.id}`}>Correct answer: {question.correctAnswer}</h3>
+                <input
+                  id={`updateCorrectAnswerInput-${question.id}`}
+                  type="text"
+                  placeholder="New correct answer"
                   className={styles.inputText}
                 />
 
@@ -183,21 +218,21 @@ export default function Questions() {
                   <button
                     className={styles.buttonUpdateQuestion}
                     title="Update the question"
-                    // onClick={(event) => handleUpdateTest(test, event)}
+                    onClick={(event) => handleUpdateQuestion(question, event)}
                   >
                     <Image src="/images/Pencil.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonConfirmUpdateQuestion} 
                     title="Confirm update"
-                    // onClick={(event) => handleUpdateTestConfirm(test, event)}
+                    onClick={(event) => handleUpdateQuestionConfirm(question, event)}
                   >
                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonCancellationUpdateQuestion} 
                     title="Cancellation update"
-                    // onClick={(event) => handleCancellation(test, event)}
+                    onClick={(event) => handleCancellation(question, event)}
                   >
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>

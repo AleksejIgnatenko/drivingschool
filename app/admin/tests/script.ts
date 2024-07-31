@@ -52,13 +52,11 @@ export const handleUpdateTest = async (test: TestModel, event: React.MouseEvent<
 
   export const handleUpdateTestConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
-    const nameCategory = document.getElementById(`categoryName-${test.id}`);
-    const nameTest = document.getElementById(`testName-${test.id}`);
     const categories = document.getElementById(`dropdownCategories-${test.id}`) as HTMLSelectElement;
     const inputUpdateTestName = document.getElementById(`updateTestNameInput-${test.id}`) as HTMLInputElement;
     const card = event.currentTarget.closest(`.${styles.card}`) as HTMLElement | null;
   
-    if (buttons && nameCategory && nameTest && categories && inputUpdateTestName && card) {
+    if (buttons && categories && inputUpdateTestName && card) {
       try {
         const updatedTest = await fetchUpdateTest(test.id, categories.value, inputUpdateTestName.value);
         if (updatedTest) {
@@ -154,5 +152,4 @@ export const handleUpdateTest = async (test: TestModel, event: React.MouseEvent<
 
     nameCategory.style.display = 'inline-block';
     nameTest.style.display = 'inline-block';
-
   };

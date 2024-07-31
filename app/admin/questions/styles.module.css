@@ -228,6 +228,7 @@
   color: white;
   outline: none; /* Remove the default outline */
   padding-left: 1em;
+  margin-bottom: 20px;
 }
 
   .container > div > input[type="text"]:focus {
