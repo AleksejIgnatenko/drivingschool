@@ -1,5 +1,5 @@
 import { fetchAddNewCategory } from "@/app/services/categoryServices/fetchAddNewCategory";
-import { CategoryModel } from "@/app/Models/CategoryModel";
+import { CategoryModel } from "@/app/Models/CategoryModel/CategoryModel";
 import { fetchUpdateCategory } from "@/app/services/categoryServices/fetchUpdateCategory";
 import { fetchDeleteCategoryAsync } from "@/app/services/categoryServices/fetchDeleteCategoryAsync";
 import styles from './styles.module.css';

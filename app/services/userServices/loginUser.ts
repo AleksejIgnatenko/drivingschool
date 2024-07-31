@@ -25,7 +25,7 @@ export const loginUser = async (userRequest: LoginUserModelRequests) => {
     } else {
       // If the response is not successful, check the status and handle the error
       const errorMessage = await response.text();
-      console.error("Error creating user:", errorMessage);
+      console.error("Error login:", errorMessage);
     }
   } catch (error) {
     console.error("Error fetching:", error);

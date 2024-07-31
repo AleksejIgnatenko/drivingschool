@@ -24,7 +24,7 @@ export const fetchAllUsersAsync = async (): Promise<UserModel[] | null> => {
       }));
     } else {
       const errorMessage = await response.text();
-      console.error('Error fetching user information:', errorMessage);
+      console.error('Error fetching get all users:', errorMessage);
       return null;
     }
   } catch (error) {

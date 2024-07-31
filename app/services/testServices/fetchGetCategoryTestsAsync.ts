@@ -21,7 +21,7 @@ export const fetchGetCategoryTestsAsync = async (idcategory: string): Promise<Te
       }));
     } else {
       const errorMessage = await response.text();
-      console.error('Error fetching user information:', errorMessage);
+      console.error('Error fetching get category tests:', errorMessage);
       return null;
     }
   } catch (error) {

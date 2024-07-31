@@ -25,7 +25,7 @@ export const getUserByIdAsync = async (): Promise<User | null> => {
     } else {
       // Если ответ не успешный, проверяем статус и обрабатываем ошибку
       const errorMessage = await response.text();
-      console.error('Error fetching user information:', errorMessage);
+      console.error('Error fetching get user information:', errorMessage);
       return null;
     }
   } catch (error) {

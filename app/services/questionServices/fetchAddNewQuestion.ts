@@ -20,7 +20,7 @@ export const fetchAddNewQuestion = async (questionModelRequest: QuestionModelReq
         } else {
             // Если ответ не успешный, проверяем статус и обрабатываем ошибку
             const errorMessage = await response.text();
-            console.error('Error creating test:', errorMessage);
+            console.error('Error creating question:', errorMessage);
             return false;
         }
     } catch (error) {

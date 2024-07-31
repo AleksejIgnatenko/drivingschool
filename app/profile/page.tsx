@@ -1,9 +1,9 @@
 'use client';
 
 import styles from './styles.module.css'; // Убедитесь, что путь к файлу указан правильно
-import Link from 'next/link';
 import { useEffect, useState, useRef } from "react";
 import { getUserByIdAsync, User } from '../services/userServices/getUserInfornation';
+import { handleBackClickAsync } from './script';
 
 export default function Login() {
   const hasBeenCalledRef = useRef(false);
@@ -42,9 +42,7 @@ export default function Login() {
               ))
             }
           </div>
-          <Link href={"/"}>
-            <input type="button" value="Back" className={styles.buttonBack} />
-          </Link>
+          <input type="button" value="Back" className={styles.buttonBack} onClick={handleBackClickAsync} />
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ export const fetchUpdateTest = async (testId: string, categoryId: string, newTes
       return responseData;
     } else {
       const errorMessage = await response.text();
-      console.error('Error fetching user information:', errorMessage);
+      console.error('Error fetching update test:', errorMessage);
       throw new Error(errorMessage);
     }
   } catch (error) {

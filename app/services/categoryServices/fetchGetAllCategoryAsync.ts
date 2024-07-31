@@ -1,4 +1,4 @@
-import { CategoryModel } from '@/app/Models/CategoryModel';
+import { CategoryModel } from '@/app/Models/CategoryModel/CategoryModel';
 import { getCookie } from '@/app/Infrastructure/getCookie';
 
 export const fetchGetAllCategoryAsync = async (): Promise<CategoryModel[] | null> => {
@@ -21,7 +21,7 @@ export const fetchGetAllCategoryAsync = async (): Promise<CategoryModel[] | null
       }));
     } else {
       const errorMessage = await response.text();
-      console.error('Error fetching user information:', errorMessage);
+      console.error('Error fetching get category:', errorMessage);
       return null;
     }
   } catch (error) {

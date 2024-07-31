@@ -113,7 +113,7 @@ export const handleUpdateTest = async (test: TestModel, event: React.MouseEvent<
         // Show the "Check Mark" and "Cancellation" buttons
         showButtons(test, buttons);
       } catch (error) {
-        console.error("Error deletion moderator:", error);
+        console.error("Error deletion test:", error);
       }
     }
   };

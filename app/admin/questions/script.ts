@@ -2,6 +2,7 @@ import { QuestionModelRequest } from "@/app/Models/QuestionModel/QuestionModelRe
 import { QuestionModel } from "@/app/Models/QuestionModel/QuestionModel";
 import { fetchAddNewQuestion } from "@/app/services/questionServices/fetchAddNewQuestion";
 import { fetchUpdateQuestion } from "@/app/services/questionServices/fetchUpdateQuestion";
+import { fetchDeleteQuestionAsync } from "@/app/services/questionServices/fetchDeleteQuestionAsync";
 import styles from './styles.module.css';
 
 export const addQuestion = async () => {
@@ -173,6 +174,20 @@ export const handleUpdateQuestionConfirm = async (questionModel: QuestionModel, 
     }
 }
 
+export const handleDeleteQuestion = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const buttons = event.currentTarget.parentNode?.children;
+  
+    if (buttons) {
+      // Hide the "Issue a Moderator" and "Delete a Moderator" buttons
+      (buttons[0] as HTMLElement).style.display = 'none';
+      (buttons[3] as HTMLElement).style.display = 'none';
+  
+      // Show the "Check Mark" and "Cancellation" buttons
+      (buttons[4] as HTMLElement).style.display = 'inline-block';
+      (buttons[5] as HTMLElement).style.display = 'inline-block';
+    }
+}
+
 export const handleCancellation = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
   
@@ -183,7 +198,24 @@ export const handleCancellation = async (question: QuestionModel, event: React.M
       // Show the "Check Mark" and "Cancellation" buttons
       showButtons(question, buttons);
     }
-  };
+};
+
+export const handleDeleteQuestionConfirm = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    try {
+        const buttons = event.currentTarget.parentNode?.children;
+        if(buttons) {
+            await fetchDeleteQuestionAsync(question.id);
+
+            // Hide the "Issue a Moderator" and "Delete a Moderator" buttons
+            hideButtons(question, buttons);
+
+            // Show the "Check Mark" and "Cancellation" buttons
+            showButtons(question, buttons);
+        }
+    } catch (error) {
+        console.error("Error deletion question:", error);
+    }
+}
 
 const hideButtons = (question: QuestionModel, buttons: HTMLCollection) => {
     (buttons[1] as HTMLElement).style.display = 'none';

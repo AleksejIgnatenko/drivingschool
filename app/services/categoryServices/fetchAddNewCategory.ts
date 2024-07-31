@@ -21,7 +21,7 @@ export const fetchAddNewCategory = async (nameCategory: string): Promise<boolean
         } else {
             // Если ответ не успешный, проверяем статус и обрабатываем ошибку
             const errorMessage = await response.text();
-            console.error('Error creating user:', errorMessage);
+            console.error('Error creating category:', errorMessage);
             return false;
         }
     } catch (error) {

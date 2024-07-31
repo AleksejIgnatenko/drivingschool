@@ -16,7 +16,7 @@ export const fetchDeleteTestAsync = async (id: string) => {
       return true;
     } else {
       const errorMessage = await response.text();
-      console.error('Error fetching user information:', errorMessage);
+      console.error('Error fetching delete test:', errorMessage);
       return null;
     }
   } catch (error) {

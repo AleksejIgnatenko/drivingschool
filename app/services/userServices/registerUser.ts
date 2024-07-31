@@ -22,7 +22,7 @@ export const registerUser = async (userRequest: RegisterUserModelRequest) => {
         } else {
             // Если ответ не успешный, проверяем статус и обрабатываем ошибку
             const errorMessage = await response.text();
-            console.error('Error creating user:', errorMessage);
+            console.error('User registration error:', errorMessage);
         }
     } catch (error) {
         console.error('Error fetching:', error);

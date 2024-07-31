@@ -1,9 +1,14 @@
 import { getCookie } from '@/app/Infrastructure/getCookie';
-import { CategoryModel } from '@/app/Models/CategoryModel';
+import { CategoryModel } from '@/app/Models/CategoryModel/CategoryModel';
+import { CategoryModelRequest } from '@/app/Models/CategoryModel/CategoryModelRequest';
 
 export const fetchUpdateCategory = async (categoryId: string, newCategoryName: string) => {
   try {
     const jwtToken = getCookie('jwtToken');
+
+    const categoryModelRequest: CategoryModelRequest = {
+      nameCategory: newCategoryName,
+    }
 
     const response = await fetch(`https://localhost:7103/Category/${categoryId}`, {
       method: "PUT",
@@ -11,7 +16,7 @@ export const fetchUpdateCategory = async (categoryId: string, newCategoryName: s
         "Content-Type": "application/json",
         "Authorization": `Bearer ${jwtToken}`,
       },
-      body: JSON.stringify({ nameCategory: newCategoryName }),
+      body: JSON.stringify(categoryModelRequest),
     });
 
     if (response.ok) {
@@ -19,7 +24,7 @@ export const fetchUpdateCategory = async (categoryId: string, newCategoryName: s
       return responseData;
     } else {
       const errorMessage = await response.text();
-      console.error('Error fetching user information:', errorMessage);
+      console.error('Error fetching update category:', errorMessage);
       throw new Error(errorMessage);
     }
   } catch (error) {

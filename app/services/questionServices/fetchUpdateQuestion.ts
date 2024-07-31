@@ -5,7 +5,7 @@ import { QuestionModel } from '@/app/Models/QuestionModel/QuestionModel';
 export const fetchUpdateQuestion = async(questionId: string, updateQuestionRequest: QuestionModelRequest) => {
     try {
         const jwtToken = getCookie('jwtToken');
-
+        console.log(questionId);
         const response = await fetch(`https://localhost:7103/Question/${questionId}`, {
             method: "PUT",
             headers: {

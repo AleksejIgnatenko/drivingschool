@@ -16,6 +16,11 @@ export const fetchAddModeratorAsync = async (userId: string) => {
         if (response.ok) {
             const responseData = await response.json();
             return responseData as UserModel;
+        } else {
+            // Если ответ не успешный, проверяем статус и обрабатываем ошибку
+            const errorMessage = await response.text();
+            console.error('Error add moderator role:', errorMessage);
+            return false;
         }
     } catch (error) {
         console.error("Error fetching:", error);
@@ -38,6 +43,11 @@ export const fetchDeleteModeratorAsync = async (userId: string) => {
         if (response.ok) {
             const responseData = await response.json();
             return responseData as UserModel;
+        } else {
+            // Если ответ не успешный, проверяем статус и обрабатываем ошибку
+            const errorMessage = await response.text();
+            console.error('Error delete moderator role:', errorMessage);
+            return false;
         }
     } catch (error) {
         console.error("Error fetching:", error);

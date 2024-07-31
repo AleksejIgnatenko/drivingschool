@@ -3,7 +3,7 @@
 import styles from './styles.module.css';
 import { useEffect, useState, useRef } from "react";
 import { TestModel } from '@/app/Models/TestModel/TestModel';
-import { CategoryModel } from '@/app/Models/CategoryModel';
+import { CategoryModel } from '@/app/Models/CategoryModel/CategoryModel';
 import { fetchGetAllTestsAsync } from '@/app/services/testServices/fetchGetAllTestsAsync';
 import { fetchGetAllCategoryAsync } from '@/app/services/categoryServices/fetchGetAllCategoryAsync';
 import Image from 'next/image';

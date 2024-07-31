@@ -22,7 +22,7 @@ export const fetchGetAllTestsAsync = async (): Promise<TestModel[] | null> => {
       }));
     } else {
       const errorMessage = await response.text();
-      console.error('Error fetching user information:', errorMessage);
+      console.error('Error fetching get test:', errorMessage);
       return null;
     }
   } catch (error) {

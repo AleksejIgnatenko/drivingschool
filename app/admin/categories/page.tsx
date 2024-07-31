@@ -2,11 +2,12 @@
 
 import styles from './styles.module.css';
 import { useEffect, useState, useRef } from "react";
-import { CategoryModel } from '@/app/Models/CategoryModel';
+import { CategoryModel } from '@/app/Models/CategoryModel/CategoryModel';
 import { fetchGetAllCategoryAsync } from '@/app/services/categoryServices/fetchGetAllCategoryAsync';
 import Image from 'next/image';
 import { addCategory, handleUpdateCategory, handleUpdateCategoryConfirm, handleDeleteCategory, handleDeleteCategoryConfirm, handleCancellation } from './script';
 import Link from 'next/link';
+import { title } from 'process';
 
 export default function Categories() {
   const hasBeenCalledRef = useRef(false);
@@ -138,7 +139,7 @@ export default function Categories() {
                         <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                     </button>
 
-                    <Link key={category.id} href={`/admin/categoryTests?id=${category.id}`}>
+                    <Link key={category.id} href={`/admin/categoryTests?id=${category.id}`} title='Category tests'>
                       <Image src="/images/Test.png" alt="Описание изображения" height={20} width={20} className={styles.categoryTests} />
                     </Link>
                   </div>

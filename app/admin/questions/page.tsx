@@ -7,7 +7,7 @@ import { QuestionModel } from '@/app/Models/QuestionModel/QuestionModel';
 import { fetchGetAllQuestionsAsync } from '@/app/services/questionServices/fetchGetAllQuestionsAsync';
 import { fetchGetAllTestsAsync } from '@/app/services/testServices/fetchGetAllTestsAsync';
 import Image from 'next/image';
-import { addQuestion, handleUpdateQuestion, handleUpdateQuestionConfirm, handleCancellation } from './script';
+import { addQuestion, handleUpdateQuestion, handleUpdateQuestionConfirm, handleDeleteQuestion, handleCancellation, handleDeleteQuestionConfirm } from './script';
 
 export default function Questions() {
   const hasBeenCalledRef = useRef(false);
@@ -51,14 +51,14 @@ export default function Questions() {
       await getAllQuestionAsync();
   };
 
-// const deleteTestConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-//   await handleDeleteTestConfirm(test, event);
+const deleteTestConfirm = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+  await handleDeleteQuestionConfirm(question, event);
   
-//   // Очистить состояние categoryData
-//   setTestData([]);
+  // Очистить состояние categoryData
+  setQuestionData([]);
   
-//   await getAllTestsAsync();
-// };
+  await getAllQuestionAsync();
+};
 
   return (
   <main className={styles.main}>
@@ -240,21 +240,21 @@ export default function Questions() {
                   <button
                     className={styles.buttonDeleteQuestion}
                     title="Delete the question"
-                    // onClick={handleDeleteTest}
+                    onClick={handleDeleteQuestion}
                   >
                     <Image src="/images/Delete.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonConfirmDeleteQuestion} 
                     title="Confirm delete"
-                    // onClick={(event) => deleteTestConfirm(test, event)}
+                    onClick={(event) => deleteTestConfirm(question, event)}
                   >
                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonCancellationDeleteQuestion} 
                     title="Cancellation delete"
-                    // onClick={(event) => handleCancellation(test, event)}
+                    onClick={(event) => handleCancellation(question, event)}
                   >
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>

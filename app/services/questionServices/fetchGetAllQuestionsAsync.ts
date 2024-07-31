@@ -28,7 +28,7 @@ export const fetchGetAllQuestionsAsync = async (): Promise<QuestionModel[] | nul
       }));
     } else {
       const errorMessage = await response.text();
-      console.error('Error fetching question:', errorMessage);
+      console.error('Error fetching get question:', errorMessage);
       return null;
     }
   } catch (error) {
