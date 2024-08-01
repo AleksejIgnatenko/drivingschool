@@ -8,6 +8,7 @@ import { fetchGetAllTestsAsync } from '@/app/services/testServices/fetchGetAllTe
 import { fetchGetAllCategoryAsync } from '@/app/services/categoryServices/fetchGetAllCategoryAsync';
 import Image from 'next/image';
 import { addTest, handleUpdateTest, handleUpdateTestConfirm, handleDeleteTest, handleDeleteTestConfirm, handleCancellation } from './script';
+import Link from 'next/link';
 
 export default function Tests() {
   const hasBeenCalledRef = useRef(false);
@@ -167,6 +168,10 @@ const deleteTestConfirm = async (test: TestModel, event: React.MouseEvent<HTMLBu
                   >
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>
+
+                  <Link key={test.id} href={`/admin/testQuestions?id=${test.id}`} title='Test questions'>
+                    <Image src="/images/Question.png" alt="Описание изображения" height={20} width={20} className={styles.testQuestions} />
+                  </Link>
                 </div>
               </div>
             </div>

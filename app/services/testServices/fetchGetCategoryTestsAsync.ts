@@ -1,10 +1,10 @@
 import { TestModel } from '@/app/Models/TestModel/TestModel';
 import { getCookie } from '@/app/Infrastructure/getCookie';
 
-export const fetchGetCategoryTestsAsync = async (idcategory: string): Promise<TestModel[] | null> => {
+export const fetchGetCategoryTestsAsync = async (idCategory: string): Promise<TestModel[] | null> => {
   try {
     const jwtToken = getCookie('jwtToken');
-    const response = await fetch(`https://localhost:7103/Test/getCategoryTests?idCategory=${idcategory}`, {
+    const response = await fetch(`https://localhost:7103/Test/getCategoryTests?idCategory=${idCategory}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
