@@ -2,7 +2,7 @@ import { getCookie } from '@/app/Infrastructure/getCookie';
 import { TestModelRequest } from '@/app/Models/TestModel/TestModelRequest';
 import { TestModel } from '@/app/Models/TestModel/TestModel';
 
-export const fetchUpdateTest = async (testId: string, categoryId: string, newTestName: string) => {
+export const fetchUpdateTestAsync = async (testId: string, categoryId: string, newTestName: string) => {
   try {
     const jwtToken = getCookie('jwtToken');
 

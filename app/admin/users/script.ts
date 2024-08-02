@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 import { fetchAddModeratorAsync, fetchDeleteModeratorAsync } from '@/app/services/userServices/fetchAddDeleteModeratorRoleAsync';
 import { fetchUserNameChangeAsync } from '@/app/services/userServices/fetchUserNameChangeAsync';
-import { UserModel } from '@/app/Models/UserModel';
+import { UserModel } from '@/app/Models/UserModel/UserModel';
 
 export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;

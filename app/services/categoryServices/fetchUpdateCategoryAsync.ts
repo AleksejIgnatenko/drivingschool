@@ -2,7 +2,7 @@ import { getCookie } from '@/app/Infrastructure/getCookie';
 import { CategoryModel } from '@/app/Models/CategoryModel/CategoryModel';
 import { CategoryModelRequest } from '@/app/Models/CategoryModel/CategoryModelRequest';
 
-export const fetchUpdateCategory = async (categoryId: string, newCategoryName: string) => {
+export const fetchUpdateCategoryAsync = async (categoryId: string, newCategoryName: string) => {
   try {
     const jwtToken = getCookie('jwtToken');
 

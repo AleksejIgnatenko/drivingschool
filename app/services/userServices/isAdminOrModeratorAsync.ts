@@ -1,6 +1,6 @@
 import { getCookie } from '@/app/Infrastructure/getCookie';
 
-export const isAdminOrModerator = async () => {
+export const isAdminOrModeratorAsync = async () => {
     try {
       const jwtToken = getCookie('jwtToken');
 

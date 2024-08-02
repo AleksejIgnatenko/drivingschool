@@ -7,7 +7,6 @@ import { fetchGetAllCategoryAsync } from '@/app/services/categoryServices/fetchG
 import Image from 'next/image';
 import { addCategory, handleUpdateCategory, handleUpdateCategoryConfirm, handleDeleteCategory, handleDeleteCategoryConfirm, handleCancellation } from './script';
 import Link from 'next/link';
-import { title } from 'process';
 
 export default function Categories() {
   const hasBeenCalledRef = useRef(false);

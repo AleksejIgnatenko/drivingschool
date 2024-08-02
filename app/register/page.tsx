@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import styles from './styles.module.css';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
-import { RegisterUserModelRequest } from '../services/userServices/registerUser';
-import { registerUser } from '../services/userServices/registerUser';
+import { RegisterUserModelRequest } from "@/app/Models/UserModel/RegisterUserModelRequest";
+import { registerUserAsync } from '../services/userServices/registerUserAsync';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,7 +20,7 @@ export default function Register() {
       email,
       password,
     };
-    await registerUser(registerUserRequest);
+    await registerUserAsync(registerUserRequest);
   };
 
   return (

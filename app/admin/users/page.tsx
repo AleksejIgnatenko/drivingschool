@@ -3,7 +3,7 @@
 import styles from './styles.module.css';
 import { useEffect, useState, useRef } from "react";
 import { fetchAllUsersAsync } from '../../services/userServices/fetchAllUsersAsync';
-import { UserModel } from '@/app/Models/UserModel';
+import { UserModel } from '@/app/Models/UserModel/UserModel';
 import Image from 'next/image';
 import { handleIssueModerator, handleAddModeratorRole, handleCancellation, handleDeleteModerator, handleDeleteModeratorRole, handleNameChange, handleNameChangeConfirm } from './script';
 

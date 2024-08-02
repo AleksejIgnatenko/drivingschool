@@ -9,7 +9,7 @@ import "./globals.css";
 import styles from './page.module.css'; 
 import { useEffect, useState, useRef } from "react";
 import Cookies from 'js-cookie';
-import { isAdminOrModerator } from "./services/userServices/isAdminOrModerator";
+import { isAdminOrModeratorAsync } from "./services/userServices/isAdminOrModeratorAsync";
 
 const inter = Inter({ subsets: ["latin"] });
 const menuItems = [
@@ -41,13 +41,13 @@ export default function RootLayout({
         try {
           // Проверяем, если пользователь находится на главной странице "/"
           if (window.location.pathname === '/') {
-            const isAdminOrModeratorResult = await isAdminOrModerator();
+            const isAdminOrModeratorResult = await isAdminOrModeratorAsync();
             if (isAdminOrModeratorResult) {
               // Если пользователь является админом или модератором и находится на странице "/"
               window.location.href = '/admin';
             }
           } else if (window.location.pathname.includes('/admin')) {
-            const isAdminOrModeratorResult = await isAdminOrModerator();
+            const isAdminOrModeratorResult = await isAdminOrModeratorAsync();
             if (!isAdminOrModeratorResult) {
               // Если пользователь не является админом или модератором и находится на странице "/admin"
               window.location.href = '/';

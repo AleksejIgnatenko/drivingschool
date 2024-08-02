@@ -2,7 +2,7 @@
 
 import styles from './styles.module.css'; // Убедитесь, что путь к файлу указан правильно
 import { useEffect, useState, useRef } from "react";
-import { getUserByIdAsync, User } from '../services/userServices/getUserInfornation';
+import { getUserByIdAsync, User } from '../services/userServices/getUserByIdAsync';
 import { handleBackClickAsync } from './script';
 
 export default function Login() {

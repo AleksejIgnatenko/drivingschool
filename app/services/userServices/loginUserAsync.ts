@@ -1,11 +1,7 @@
 import Cookies from 'js-cookie';
+import { LoginUserModelRequests } from '@/app/Models/UserModel/LoginUserModelRequests';
 
-export interface LoginUserModelRequests {
-  email: string;
-  password: string;
-}
-
-export const loginUser = async (userRequest: LoginUserModelRequests) => {
+export const loginUserAsync = async (userRequest: LoginUserModelRequests) => {
   try {
     const response = await fetch("https://localhost:7103/Users/login", {
       method: "POST",

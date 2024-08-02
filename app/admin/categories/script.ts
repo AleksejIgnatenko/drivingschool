@@ -1,12 +1,12 @@
-import { fetchAddNewCategory } from "@/app/services/categoryServices/fetchAddNewCategory";
+import { fetchAddCategoryAsync } from "@/app/services/categoryServices/fetchAddCategoryAsync";
 import { CategoryModel } from "@/app/Models/CategoryModel/CategoryModel";
-import { fetchUpdateCategory } from "@/app/services/categoryServices/fetchUpdateCategory";
+import { fetchUpdateCategoryAsync } from "@/app/services/categoryServices/fetchUpdateCategoryAsync";
 import { fetchDeleteCategoryAsync } from "@/app/services/categoryServices/fetchDeleteCategoryAsync";
 import styles from './styles.module.css';
 
 export const addCategory = async () => {
     const inputCategoryName = document.getElementById('categoryName') as HTMLInputElement;
-    const result = await fetchAddNewCategory(inputCategoryName.value); // Добавляем await здесь
+    const result = await fetchAddCategoryAsync(inputCategoryName.value); // Добавляем await здесь
 
     if (result) {
       inputCategoryName.value = '';
@@ -38,7 +38,7 @@ export const handleUpdateCategory = async (category: CategoryModel, event: React
     const card = event.currentTarget.closest(`.${styles.card}`) as HTMLElement | null;
     if (buttons && input && card) {
       try {
-        const updatedCategory = await fetchUpdateCategory(category.id, input.value);
+        const updatedCategory = await fetchUpdateCategoryAsync(category.id, input.value);
         if (updatedCategory) {
           // Update the user's card
           const categoryIdElement = card.querySelector("h3:nth-of-type(1)");

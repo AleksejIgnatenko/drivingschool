@@ -1,10 +1,6 @@
-export interface RegisterUserModelRequest{
-    userName: string;
-    email: string;
-    password: string;
-}
+import { RegisterUserModelRequest } from "@/app/Models/UserModel/RegisterUserModelRequest";
 
-export const registerUser = async (userRequest: RegisterUserModelRequest) => {
+export const registerUserAsync = async (userRequest: RegisterUserModelRequest) => {
     try {
         const response = await fetch("https://localhost:7103/Users/register", {
             method: "POST",

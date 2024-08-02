@@ -1,7 +1,7 @@
 import { TestModelRequest } from "@/app/Models/TestModel/TestModelRequest";
 import { getCookie } from '@/app/Infrastructure/getCookie';
 
-export const fetchAddNewTest = async (testModelRequest: TestModelRequest): Promise<boolean> => {
+export const fetchAddTestAsync = async (testModelRequest: TestModelRequest): Promise<boolean> => {
     try {
         const jwtToken = getCookie('jwtToken');
 

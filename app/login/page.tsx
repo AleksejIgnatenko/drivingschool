@@ -3,8 +3,8 @@
 import styles from './styles.module.css'; // Make sure the file path is correct
 import Link from 'next/link';
 import { useState } from "react";
-import { LoginUserModelRequests } from '../services/userServices/loginUser';
-import { loginUser } from '../services/userServices/loginUser';
+import { LoginUserModelRequests } from '@/app/Models/UserModel/LoginUserModelRequests';
+import { loginUserAsync } from '../services/userServices/loginUserAsync';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -15,7 +15,7 @@ export default function Login() {
       email,
       password,
     };
-    await loginUser(loginUserRequest);
+    await loginUserAsync(loginUserRequest);
     window.location.href = '/';
   };
 

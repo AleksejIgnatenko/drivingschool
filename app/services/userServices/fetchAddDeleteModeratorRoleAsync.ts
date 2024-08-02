@@ -1,4 +1,4 @@
-import { UserModel } from '@/app/Models/UserModel';
+import { UserModel } from '@/app/Models/UserModel/UserModel';
 import { getCookie } from '@/app/Infrastructure/getCookie';
 
 export const fetchAddModeratorAsync = async (userId: string) => {

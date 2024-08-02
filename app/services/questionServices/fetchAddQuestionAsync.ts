@@ -2,7 +2,7 @@ import { QuestionModelRequest } from "@/app/Models/QuestionModel/QuestionModelRe
 import { getCookie } from "@/app/Infrastructure/getCookie";
 import { tree } from "next/dist/build/templates/app-page";
 
-export const fetchAddNewQuestion = async (questionModelRequest: QuestionModelRequest): Promise<boolean> => {
+export const fetchAddQuestionAsync = async (questionModelRequest: QuestionModelRequest): Promise<boolean> => {
     try{
         const jwtToken = getCookie('jwtToken');
 

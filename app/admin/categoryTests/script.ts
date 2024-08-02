@@ -1,6 +1,6 @@
 import { TestModelRequest } from "@/app/Models/TestModel/TestModelRequest";
-import { fetchAddNewTest } from "@/app/services/testServices/fetchAddNewTest";
-import { fetchUpdateTest } from "@/app/services/testServices/fetchUpdateTest";
+import { fetchAddTestAsync } from "@/app/services/testServices/fetchAddTestAsync";
+import { fetchUpdateTestAsync } from "@/app/services/testServices/fetchUpdateTestAsync";
 import { fetchDeleteTestAsync } from "@/app/services/testServices/fetchDeleteTestAsync";
 import styles from './styles.module.css';
 import { TestModel } from "@/app/Models/TestModel/TestModel";
@@ -13,7 +13,7 @@ export const addTest = async () => {
       idCategory: inputCategoryId.value,
       nameTest: inputTestName.value 
     };
-    const result = await fetchAddNewTest(testModelRequest);
+    const result = await fetchAddTestAsync(testModelRequest);
     if (result) {
       inputTestName.value = '';
   }
@@ -58,7 +58,7 @@ export const handleUpdateTest = async (test: TestModel, event: React.MouseEvent<
   
     if (buttons && categories && inputUpdateTestName && card) {
       try {
-        const updatedTest = await fetchUpdateTest(test.id, categories.value, inputUpdateTestName.value);
+        const updatedTest = await fetchUpdateTestAsync(test.id, categories.value, inputUpdateTestName.value);
         if (updatedTest) {
           // Update the user's card
           const testIdElement = card.querySelector("h3:nth-of-type(1)");

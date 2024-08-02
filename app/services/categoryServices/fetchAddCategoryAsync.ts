@@ -2,7 +2,7 @@ export interface CreateCategoryModelRequest {
     nameCategory: string;
 }
 
-export const fetchAddNewCategory = async (nameCategory: string): Promise<boolean> => {
+export const fetchAddCategoryAsync = async (nameCategory: string): Promise<boolean> => {
     try {
         const category: CreateCategoryModelRequest = {
             nameCategory

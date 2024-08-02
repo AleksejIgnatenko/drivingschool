@@ -1,7 +1,7 @@
 import { QuestionModelRequest } from "@/app/Models/QuestionModel/QuestionModelRequest";
 import { QuestionModel } from "@/app/Models/QuestionModel/QuestionModel";
-import { fetchAddNewQuestion } from "@/app/services/questionServices/fetchAddNewQuestion";
-import { fetchUpdateQuestion } from "@/app/services/questionServices/fetchUpdateQuestion";
+import { fetchAddQuestionAsync } from "@/app/services/questionServices/fetchAddQuestionAsync";
+import { fetchUpdateQuestionAsync } from "@/app/services/questionServices/fetchUpdateQuestionAsync";
 import { fetchDeleteQuestionAsync } from "@/app/services/questionServices/fetchDeleteQuestionAsync";
 import styles from './styles.module.css';
 
@@ -26,7 +26,7 @@ export const addQuestion = async () => {
         correctAnswer: inputCorrectAnswer.value,
     }
 
-    const result = await fetchAddNewQuestion(questionModelRequest);
+    const result = await fetchAddQuestionAsync(questionModelRequest);
     if(result){
         inputQuestionText.value = '';
         inputLinkPhoto.value = '';
@@ -126,7 +126,7 @@ export const handleUpdateQuestionConfirm = async (questionModel: QuestionModel, 
                 correctAnswer: inputNewCorrectAnswer.value
             }
 
-            const updatedQuestion = await fetchUpdateQuestion(questionModel.id, updateQuestionRequest);
+            const updatedQuestion = await fetchUpdateQuestionAsync(questionModel.id, updateQuestionRequest);
             console.log(updatedQuestion);
             if (updatedQuestion){
                 // Update the user's card
