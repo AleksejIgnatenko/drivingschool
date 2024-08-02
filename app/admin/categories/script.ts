@@ -4,7 +4,7 @@ import { fetchUpdateCategoryAsync } from "@/app/services/categoryServices/fetchU
 import { fetchDeleteCategoryAsync } from "@/app/services/categoryServices/fetchDeleteCategoryAsync";
 import styles from './styles.module.css';
 
-export const addCategory = async () => {
+export const handleAddCategoryAsync = async () => {
     const inputCategoryName = document.getElementById('categoryName') as HTMLInputElement;
     const result = await fetchAddCategoryAsync(inputCategoryName.value); // Добавляем await здесь
 
@@ -13,7 +13,7 @@ export const addCategory = async () => {
     }
 };
 
-export const handleUpdateCategory = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+export const handleUpdateCategoryAsync = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
     const nameCategory = document.getElementById(`categoryName-${category.id}`);
     const input = document.getElementById(`categoryNameInput-${category.id}`) as HTMLInputElement;
@@ -22,6 +22,7 @@ export const handleUpdateCategory = async (category: CategoryModel, event: React
       // Hide the "Issue a Moderator" and "Delete a Moderator" buttons
       (buttons[0] as HTMLElement).style.display = 'none';
       (buttons[3] as HTMLElement).style.display = 'none';
+      (buttons[6] as HTMLElement).style.display = 'none';
       nameCategory.style.display = 'none';
   
       // Show the "Check Mark" and "Cancellation" buttons
@@ -32,7 +33,7 @@ export const handleUpdateCategory = async (category: CategoryModel, event: React
     }
   };
 
-  export const handleUpdateCategoryConfirm = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleUpdateCategoryConfirmAsync = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
     const input = document.getElementById(`categoryNameInput-${category.id}`) as HTMLInputElement;
     const card = event.currentTarget.closest(`.${styles.card}`) as HTMLElement | null;
@@ -64,13 +65,14 @@ export const handleUpdateCategory = async (category: CategoryModel, event: React
     }
   };
 
-  export const handleDeleteCategory = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleDeleteCategoryAsync = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
   
     if (buttons) {
       // Hide the "Issue a Moderator" and "Delete a Moderator" buttons
       (buttons[0] as HTMLElement).style.display = 'none';
       (buttons[3] as HTMLElement).style.display = 'none';
+      (buttons[6] as HTMLElement).style.display = 'none';
   
       // Show the "Check Mark" and "Cancellation" buttons
       (buttons[4] as HTMLElement).style.display = 'inline-block';
@@ -78,7 +80,7 @@ export const handleUpdateCategory = async (category: CategoryModel, event: React
     }
   };
 
-  export const handleDeleteCategoryConfirm = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleDeleteCategoryConfirmAsync = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
     if (buttons) {
       try{
@@ -95,7 +97,7 @@ export const handleUpdateCategory = async (category: CategoryModel, event: React
     }
   };
 
-  export const handleCancellation = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleCancellationAsync = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
   
     if (buttons) {
@@ -121,4 +123,5 @@ export const handleUpdateCategory = async (category: CategoryModel, event: React
     nameCategory.style.display = 'inline-block';
     (buttons[0] as HTMLElement).style.display = 'inline-block';
     (buttons[3] as HTMLElement).style.display = 'inline-block';
+    (buttons[6] as HTMLElement).style.display = 'inline-block';
   };

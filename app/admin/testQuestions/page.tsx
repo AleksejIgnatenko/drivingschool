@@ -7,9 +7,9 @@ import { QuestionModel } from '@/app/Models/QuestionModel/QuestionModel';
 import { fetchGetTestQuestionsAsync } from '@/app/services/questionServices/fetchGetTestQuestionsAsync';
 import { fetchGetAllTestsAsync } from '@/app/services/testServices/fetchGetAllTestsAsync';
 import Image from 'next/image';
-import { addQuestion, handleUpdateQuestion, handleUpdateQuestionConfirm, handleDeleteQuestion, handleCancellation, handleDeleteQuestionConfirm } from './script';
+import { handleAddQuestionAsync, handleUpdateQuestionAsync, handleUpdateQuestionConfirmAsync, handleDeleteQuestionAsync, handleDeleteQuestionConfirmAsync, handleCancellationAsync } from './script';
 
-export default function testQuestions({ searchParams }: { searchParams: { id: string } }) {
+export default function testQuestions({ searchParams }: { searchParams: { idTest: string } }) {
   const hasBeenCalledRef = useRef(false);
   const [testData, setTestData] = useState<TestModel[]>([]);
   const [questionData, setQuestionData] = useState<QuestionModel[]>([]);
@@ -20,7 +20,7 @@ export default function testQuestions({ searchParams }: { searchParams: { id: st
           hasBeenCalledRef.current = true;
 
           getAllTestsAsync();
-          getTestQuestionsAsync(searchParams.id);
+          getTestQuestionsAsync(searchParams.idTest);
       }
   }, []);
 
@@ -33,8 +33,8 @@ export default function testQuestions({ searchParams }: { searchParams: { id: st
     }
   };
 
-  const getTestQuestionsAsync = async (id: string) => { 
-    const questions = await fetchGetTestQuestionsAsync(id);
+  const getTestQuestionsAsync = async (idTest: string) => { 
+    const questions = await fetchGetTestQuestionsAsync(idTest);
     if (questions) {
       setQuestionData(questions);
     } else {
@@ -46,18 +46,18 @@ export default function testQuestions({ searchParams }: { searchParams: { id: st
       setIsFormVisible(!isAddQuestionFormVisible);
   };
 
-  const handleAddQuestion = async () => { 
-      await addQuestion();
-      getTestQuestionsAsync(searchParams.id);
+  const addQuestionAsync = async () => { 
+      await handleAddQuestionAsync();
+      await getTestQuestionsAsync(searchParams.idTest);
   };
 
-const deleteTestConfirm = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-  await handleDeleteQuestionConfirm(question, event);
+const deleteTestConfirmAsync = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+  await handleDeleteQuestionConfirmAsync(question, event);
   
   // Очистить состояние categoryData
   setQuestionData([]);
   
-  getTestQuestionsAsync(searchParams.id);
+  await getTestQuestionsAsync(searchParams.idTest);
 };
 
   return (
@@ -142,7 +142,7 @@ const deleteTestConfirm = async (question: QuestionModel, event: React.MouseEven
                 />
                 <i className='bx bx-user-circle'></i>
               </div>
-              <input type="button" value="Add question" className={styles.buttonAddQuestion} onClick={handleAddQuestion} 
+              <input type="button" value="Add question" className={styles.buttonAddQuestion} onClick={addQuestionAsync} 
               />
               <input type="button" value="Back" className={styles.buttonBack} onClick={toggleFormVisibility}/>
             </div>
@@ -218,21 +218,21 @@ const deleteTestConfirm = async (question: QuestionModel, event: React.MouseEven
                   <button
                     className={styles.buttonUpdateQuestion}
                     title="Update the question"
-                    onClick={(event) => handleUpdateQuestion(question, event)}
+                    onClick={(event) => handleUpdateQuestionAsync(question, event)}
                   >
                     <Image src="/images/Pencil.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonConfirmUpdateQuestion} 
                     title="Confirm update"
-                    onClick={(event) => handleUpdateQuestionConfirm(question, event)}
+                    onClick={(event) => handleUpdateQuestionConfirmAsync(question, event)}
                   >
                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonCancellationUpdateQuestion} 
                     title="Cancellation update"
-                    onClick={(event) => handleCancellation(question, event)}
+                    onClick={(event) => handleCancellationAsync(question, event)}
                   >
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>
@@ -240,21 +240,21 @@ const deleteTestConfirm = async (question: QuestionModel, event: React.MouseEven
                   <button
                     className={styles.buttonDeleteQuestion}
                     title="Delete the question"
-                    onClick={handleDeleteQuestion}
+                    onClick={handleDeleteQuestionAsync}
                   >
                     <Image src="/images/Delete.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonConfirmDeleteQuestion} 
                     title="Confirm delete"
-                    onClick={(event) => deleteTestConfirm(question, event)}
+                    onClick={(event) => deleteTestConfirmAsync(question, event)}
                   >
                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonCancellationDeleteQuestion} 
                     title="Cancellation delete"
-                    onClick={(event) => handleCancellation(question, event)}
+                    onClick={(event) => handleCancellationAsync(question, event)}
                   >
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>

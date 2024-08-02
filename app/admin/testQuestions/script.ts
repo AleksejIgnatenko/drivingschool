@@ -5,7 +5,7 @@ import { fetchUpdateQuestionAsync } from "@/app/services/questionServices/fetchU
 import { fetchDeleteQuestionAsync } from "@/app/services/questionServices/fetchDeleteQuestionAsync";
 import styles from './styles.module.css';
 
-export const addQuestion = async () => {
+export const handleAddQuestionAsync = async () => {
     const selectTestId = document.getElementById('tests') as HTMLSelectElement;
     const inputQuestionText = document.getElementById('questionText') as HTMLInputElement;
     const inputLinkPhoto = document.getElementById('linkPhoto') as HTMLInputElement;
@@ -38,7 +38,7 @@ export const addQuestion = async () => {
     }
 }
 
-export const handleUpdateQuestion = async (questionModel: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+export const handleUpdateQuestionAsync = async (questionModel: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
 
     const testName = document.getElementById(`testName-${questionModel.id}`);
@@ -101,7 +101,7 @@ export const handleUpdateQuestion = async (questionModel: QuestionModel, event: 
     }
 }
 
-export const handleUpdateQuestionConfirm = async (questionModel: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+export const handleUpdateQuestionConfirmAsync = async (questionModel: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     try {
         const buttons = event.currentTarget.parentNode?.children;
         const tests = document.getElementById(`dropdownTest-${questionModel.id}`) as HTMLSelectElement;
@@ -174,7 +174,7 @@ export const handleUpdateQuestionConfirm = async (questionModel: QuestionModel, 
     }
 }
 
-export const handleDeleteQuestion = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+export const handleDeleteQuestionAsync = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
   
     if (buttons) {
@@ -188,19 +188,7 @@ export const handleDeleteQuestion = async (event: React.MouseEvent<HTMLButtonEle
     }
 }
 
-export const handleCancellation = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const buttons = event.currentTarget.parentNode?.children;
-  
-    if (buttons) {
-      // Hide the "Issue a Moderator" and "Delete a Moderator" buttons
-      hideButtons(question, buttons);
-  
-      // Show the "Check Mark" and "Cancellation" buttons
-      showButtons(question, buttons);
-    }
-};
-
-export const handleDeleteQuestionConfirm = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+export const handleDeleteQuestionConfirmAsync = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     try {
         const buttons = event.currentTarget.parentNode?.children;
         if(buttons) {
@@ -216,6 +204,18 @@ export const handleDeleteQuestionConfirm = async (question: QuestionModel, event
         console.error("Error deletion question:", error);
     }
 }
+
+export const handleCancellationAsync = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const buttons = event.currentTarget.parentNode?.children;
+  
+    if (buttons) {
+      // Hide the "Issue a Moderator" and "Delete a Moderator" buttons
+      hideButtons(question, buttons);
+  
+      // Show the "Check Mark" and "Cancellation" buttons
+      showButtons(question, buttons);
+    }
+};
 
 const hideButtons = (question: QuestionModel, buttons: HTMLCollection) => {
     (buttons[1] as HTMLElement).style.display = 'none';

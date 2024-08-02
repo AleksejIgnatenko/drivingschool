@@ -5,7 +5,7 @@ import { fetchDeleteTestAsync } from "@/app/services/testServices/fetchDeleteTes
 import styles from './styles.module.css';
 import { TestModel } from "@/app/Models/TestModel/TestModel";
 
-export const addTest = async () => {
+export const handleAddTestAsync = async () => {
   const inputCategoryId = document.getElementById('categories') as HTMLSelectElement;
   const inputTestName = document.getElementById('testName') as HTMLInputElement;
 
@@ -19,7 +19,7 @@ export const addTest = async () => {
   }
 };
 
-export const handleUpdateTest = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+export const handleUpdateTestAsync = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
   const buttons = event.currentTarget.parentNode?.children;
   const nameCategory = document.getElementById(`categoryName-${test.id}`);
   const nameTest = document.getElementById(`testName-${test.id}`);
@@ -50,7 +50,7 @@ export const handleUpdateTest = async (test: TestModel, event: React.MouseEvent<
   }
 };
 
-  export const handleUpdateTestConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleUpdateTestConfirmAsync = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
     const categories = document.getElementById(`dropdownCategories-${test.id}`) as HTMLSelectElement;
     const inputUpdateTestName = document.getElementById(`updateTestNameInput-${test.id}`) as HTMLInputElement;
@@ -87,7 +87,7 @@ export const handleUpdateTest = async (test: TestModel, event: React.MouseEvent<
     }
   };
 
-  export const handleDeleteTest = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleDeleteTestAsync = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
   
     if (buttons) {
@@ -101,7 +101,7 @@ export const handleUpdateTest = async (test: TestModel, event: React.MouseEvent<
     }
   };
 
-  export const handleDeleteTestConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleDeleteTestConfirmAsync = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
     if (buttons) {
       try{
@@ -118,7 +118,7 @@ export const handleUpdateTest = async (test: TestModel, event: React.MouseEvent<
     }
   };
 
-  export const handleCancellation = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleCancellationAsync = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
   
     if (buttons) {

@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { fetchAllUsersAsync } from '../../services/userServices/fetchAllUsersAsync';
 import { UserModel } from '@/app/Models/UserModel/UserModel';
 import Image from 'next/image';
-import { handleIssueModerator, handleAddModeratorRole, handleCancellation, handleDeleteModerator, handleDeleteModeratorRole, handleNameChange, handleNameChangeConfirm } from './script';
+import { handleIssueModeratorAsync, handleAddModeratorRoleAsync, handleCancellationAsync, handleDeleteModeratorAsync, handleDeleteModeratorRoleAsync, handleNameChangeAsync, handleNameChangeConfirmAsync } from './script';
 
 export default function Users() {
   const hasBeenCalledRef = useRef(false);
@@ -55,58 +55,58 @@ export default function Users() {
                     <button
                       className={styles.buttonIssueModerator}
                       title="Issue a Moderator"
-                      onClick={(event) => handleIssueModerator(event)}
+                      onClick={(event) => handleIssueModeratorAsync(event)}
                     >
                       <Image src="/images/AddModerator.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
                       className={styles.buttonConfirmModerator} 
                       title="Confirm"
-                      onClick={(event) => handleAddModeratorRole(user, event)}>
+                      onClick={(event) => handleAddModeratorRoleAsync(user, event)}>
                       <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
                       className={styles.buttonCancellationModerator} 
                       title="Cancellation"
-                      onClick={(event) => handleCancellation(user, event)}>
+                      onClick={(event) => handleCancellationAsync(user, event)}>
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                     </button>
 
                     <button 
                       className={styles.buttonDeleteModerator} 
                       title="Delete a Moderator"
-                      onClick={(event) => handleDeleteModerator(event)}>
+                      onClick={(event) => handleDeleteModeratorAsync(event)}>
                       <Image src="/images/DeleteModerator.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
                       className={styles.buttonConfirmDeleteModerator} 
                       title="Confirm"
-                      onClick={(event) => handleDeleteModeratorRole(user, event)}>
+                      onClick={(event) => handleDeleteModeratorRoleAsync(user, event)}>
                       <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
                       className={styles.buttonCancellationDeleteModerator} 
                       title="Cancellation"
-                      onClick={(event) => handleCancellation(user, event)}>
+                      onClick={(event) => handleCancellationAsync(user, event)}>
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                     </button>
 
                     <button 
                       className={styles.buttonNameChange} 
                       title="Name change"
-                      onClick={(event) => handleNameChange(user, event)}>
+                      onClick={(event) => handleNameChangeAsync(user, event)}>
                       <Image src="/images/Pencil.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
                       className={styles.buttonConfirmNameChange} 
                       title="Confirm"
-                      onClick={(event) => handleNameChangeConfirm(user, event)}>
+                      onClick={(event) => handleNameChangeConfirmAsync(user, event)}>
                       <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
                       className={styles.buttonCancellationNameChange} 
                       title="Cancellation"
-                      onClick={(event) => handleCancellation(user, event)}>
+                      onClick={(event) => handleCancellationAsync(user, event)}>
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                   </div>

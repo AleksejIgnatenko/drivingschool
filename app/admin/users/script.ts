@@ -3,7 +3,7 @@ import { fetchAddModeratorAsync, fetchDeleteModeratorAsync } from '@/app/service
 import { fetchUserNameChangeAsync } from '@/app/services/userServices/fetchUserNameChangeAsync';
 import { UserModel } from '@/app/Models/UserModel/UserModel';
 
-export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+export const handleIssueModeratorAsync = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
   
     if (buttons) {
@@ -18,7 +18,7 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
     }
   };
 
-  export const handleAddModeratorRole = async (user:UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleAddModeratorRoleAsync = async (user:UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
     const card = event.currentTarget.closest(`.${styles.card}`) as HTMLElement | null;
   
@@ -56,7 +56,7 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
     }
   };
 
-  export const handleDeleteModerator = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleDeleteModeratorAsync = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
   
     if (buttons) {
@@ -71,7 +71,7 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
     }
   };
 
-  export const handleDeleteModeratorRole = async (user: UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleDeleteModeratorRoleAsync = async (user: UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
     const card = event.currentTarget.closest(`.${styles.card}`) as HTMLElement | null;
   
@@ -109,7 +109,7 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
     }
   };
 
-  export const handleNameChange = async (user: UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleNameChangeAsync = async (user: UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const input = document.getElementById(`nameChangeInput-${user.id}`) as HTMLInputElement;
     const h3UserName = document.getElementById(`userName-${user.id}`);
     const buttons = event.currentTarget.parentNode?.children;
@@ -129,7 +129,7 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
     }
   };
 
-  export const handleNameChangeConfirm = async (user: UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleNameChangeConfirmAsync = async (user: UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const input = document.getElementById(`nameChangeInput-${user.id}`) as HTMLInputElement;
     const buttons = event.currentTarget.parentNode?.children;
     const card = event.currentTarget.closest(`.${styles.card}`) as HTMLElement | null;
@@ -166,7 +166,7 @@ export const handleIssueModerator = async (event: React.MouseEvent<HTMLButtonEle
     }
   };
   
-  export const handleCancellation = async (user: UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  export const handleCancellationAsync = async (user: UserModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const buttons = event.currentTarget.parentNode?.children;
   
     if (buttons) {

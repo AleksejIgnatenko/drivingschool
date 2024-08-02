@@ -7,7 +7,7 @@ import { QuestionModel } from '@/app/Models/QuestionModel/QuestionModel';
 import { fetchGetAllQuestionsAsync } from '@/app/services/questionServices/fetchGetAllQuestionsAsync';
 import { fetchGetAllTestsAsync } from '@/app/services/testServices/fetchGetAllTestsAsync';
 import Image from 'next/image';
-import { addQuestion, handleUpdateQuestion, handleUpdateQuestionConfirm, handleDeleteQuestion, handleCancellation, handleDeleteQuestionConfirm } from './script';
+import { handleAddQuestionAsync, handleUpdateQuestionAsync, handleUpdateQuestionConfirmAsync, handleDeleteQuestionAsync, handleDeleteQuestionConfirmAsync, handleCancellationAsync} from './script';
 
 export default function Questions() {
   const hasBeenCalledRef = useRef(false);
@@ -24,6 +24,15 @@ export default function Questions() {
       }
   }, []);
 
+    const getAllTestsAsync = async () => { 
+    const tests = await fetchGetAllTestsAsync();
+    if (tests) {
+      setTestData(tests);
+    } else {
+      // Обработка случая, когда данные о категориях недоступны
+    }
+  };
+
     const getAllQuestionAsync = async () => { 
     const questions = await fetchGetAllQuestionsAsync();
     if (questions) {
@@ -33,26 +42,17 @@ export default function Questions() {
     }
   };
 
-  const getAllTestsAsync = async () => { 
-    const tests = await fetchGetAllTestsAsync();
-    if (tests) {
-      setTestData(tests);
-    } else {
-      // Обработка случая, когда данные о категориях недоступны
-    }
-  };
-
   const toggleFormVisibility = () => {
       setIsFormVisible(!isAddQuestionFormVisible);
   };
 
-  const handleAddQuestion = async () => { 
-      await addQuestion();
+  const addQuestionAsync = async () => { 
+      await handleAddQuestionAsync();
       await getAllQuestionAsync();
   };
 
-const deleteTestConfirm = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-  await handleDeleteQuestionConfirm(question, event);
+const deleteTestConfirmAsync = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+  await handleDeleteQuestionConfirmAsync(question, event);
   
   // Очистить состояние categoryData
   setQuestionData([]);
@@ -142,7 +142,7 @@ const deleteTestConfirm = async (question: QuestionModel, event: React.MouseEven
                 />
                 <i className='bx bx-user-circle'></i>
               </div>
-              <input type="button" value="Add question" className={styles.buttonAddQuestion} onClick={handleAddQuestion} 
+              <input type="button" value="Add question" className={styles.buttonAddQuestion} onClick={addQuestionAsync} 
               />
               <input type="button" value="Back" className={styles.buttonBack} onClick={toggleFormVisibility}/>
             </div>
@@ -218,21 +218,21 @@ const deleteTestConfirm = async (question: QuestionModel, event: React.MouseEven
                   <button
                     className={styles.buttonUpdateQuestion}
                     title="Update the question"
-                    onClick={(event) => handleUpdateQuestion(question, event)}
+                    onClick={(event) => handleUpdateQuestionAsync(question, event)}
                   >
                     <Image src="/images/Pencil.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonConfirmUpdateQuestion} 
                     title="Confirm update"
-                    onClick={(event) => handleUpdateQuestionConfirm(question, event)}
+                    onClick={(event) => handleUpdateQuestionConfirmAsync(question, event)}
                   >
                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonCancellationUpdateQuestion} 
                     title="Cancellation update"
-                    onClick={(event) => handleCancellation(question, event)}
+                    onClick={(event) => handleCancellationAsync(question, event)}
                   >
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>
@@ -240,21 +240,21 @@ const deleteTestConfirm = async (question: QuestionModel, event: React.MouseEven
                   <button
                     className={styles.buttonDeleteQuestion}
                     title="Delete the question"
-                    onClick={handleDeleteQuestion}
+                    onClick={handleDeleteQuestionAsync}
                   >
                     <Image src="/images/Delete.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonConfirmDeleteQuestion} 
                     title="Confirm delete"
-                    onClick={(event) => deleteTestConfirm(question, event)}
+                    onClick={(event) => deleteTestConfirmAsync(question, event)}
                   >
                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonCancellationDeleteQuestion} 
                     title="Cancellation delete"
-                    onClick={(event) => handleCancellation(question, event)}
+                    onClick={(event) => handleCancellationAsync(question, event)}
                   >
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>

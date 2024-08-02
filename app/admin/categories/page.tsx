@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { CategoryModel } from '@/app/Models/CategoryModel/CategoryModel';
 import { fetchGetAllCategoryAsync } from '@/app/services/categoryServices/fetchGetAllCategoryAsync';
 import Image from 'next/image';
-import { addCategory, handleUpdateCategory, handleUpdateCategoryConfirm, handleDeleteCategory, handleDeleteCategoryConfirm, handleCancellation } from './script';
+import { handleAddCategoryAsync, handleUpdateCategoryAsync, handleUpdateCategoryConfirmAsync, handleDeleteCategoryAsync, handleDeleteCategoryConfirmAsync, handleCancellationAsync } from './script';
 import Link from 'next/link';
 
 export default function Categories() {
@@ -34,17 +34,13 @@ export default function Categories() {
       setIsFormVisible(!isAddCategoryFormVisible);
   };
 
-  const handleAddCategory = async () => { 
-      await addCategory();
+  const addCategoryAsync = async () => { 
+      await handleAddCategoryAsync();
       await getAllCategoryAsync();
   };
 
-    const updateCategoryConfirm = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-      await handleUpdateCategoryConfirm(category, event);
-  };
-
-  const deleteCategoryConfirm = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-    await handleDeleteCategoryConfirm(category, event);
+  const deleteCategoryConfirmAsync = async (category: CategoryModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+    await handleDeleteCategoryConfirmAsync(category, event);
     
     // Очистить состояние categoryData
     setCategoryData([]);
@@ -76,7 +72,7 @@ export default function Categories() {
                 />
                 <i className='bx bx-user-circle'></i>
               </div>
-                <input type="button" value="Add category" className={styles.buttonAddСategory} onClick={handleAddCategory}/>
+                <input type="button" value="Add category" className={styles.buttonAddСategory} onClick={addCategoryAsync}/>
                 <input type="button" value="Back" className={styles.buttonBack} onClick={toggleFormVisibility}/>
             </div>
           </div>
@@ -101,40 +97,40 @@ export default function Categories() {
                     <button
                       className={styles.buttonUpdateCategory}
                       title="Update the category"
-                      onClick={(event) => handleUpdateCategory(category, event)}
+                      onClick={(event) => handleUpdateCategoryAsync(category, event)}
                     >
                       <Image src="/images/Pencil.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
                       className={styles.buttonConfirmUpdateCategory} 
                       title="Confirm update"
-                      onClick={(event) => updateCategoryConfirm(category, event)}>
+                      onClick={(event) => handleUpdateCategoryConfirmAsync(category, event)}>
                       <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
                       className={styles.buttonCancellationUpdateCategory} 
                       title="Cancellation update"
-                      onClick={(event) => handleCancellation(category, event)}>
+                      onClick={(event) => handleCancellationAsync(category, event)}>
                         <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                     </button>
 
                     <button
                       className={styles.buttonDeleteCategory}
                       title="Delete the category"
-                      onClick={handleDeleteCategory}
+                      onClick={handleDeleteCategoryAsync}
                     >
                       <Image src="/images/Delete.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
                       className={styles.buttonConfirmDeleteCategory} 
                       title="Confirm delete"
-                      onClick={(event) => deleteCategoryConfirm(category, event)}>
+                      onClick={(event) => deleteCategoryConfirmAsync(category, event)}>
                       <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                     </button>
                     <button 
                       className={styles.buttonCancellationDeleteCategory} 
                       title="Cancellation delete"
-                      onClick={(event) => handleCancellation(category, event)}>
+                      onClick={(event) => handleCancellationAsync(category, event)}>
                         <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                     </button>
 

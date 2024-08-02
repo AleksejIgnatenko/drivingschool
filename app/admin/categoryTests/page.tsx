@@ -7,7 +7,7 @@ import { CategoryModel } from '@/app/Models/CategoryModel/CategoryModel';
 import { fetchGetCategoryTestsAsync } from '@/app/services/testServices/fetchGetCategoryTestsAsync';
 import { fetchGetAllCategoryAsync } from '@/app/services/categoryServices/fetchGetAllCategoryAsync';
 import Image from 'next/image';
-import { addTest, handleUpdateTest, handleUpdateTestConfirm, handleDeleteTest, handleDeleteTestConfirm, handleCancellation } from './script';
+import { handleAddTestAsync, handleUpdateTestAsync, handleUpdateTestConfirmAsync, handleDeleteTestAsync, handleDeleteTestConfirmAsync, handleCancellationAsync } from './script';
 
 export default function CategoryTests({ searchParams }: { searchParams: { id: string } }) {
   const hasBeenCalledRef = useRef(false);
@@ -45,22 +45,13 @@ export default function CategoryTests({ searchParams }: { searchParams: { id: st
       setIsFormVisible(!isAddTestFormVisible);
   };
 
-  const handleAddTest = async () => { 
-      await addTest();
+  const addTestAsync = async () => { 
+      await handleAddTestAsync();
       await getCategoryTestsAsync(searchParams.id);
   };
 
-  const updateTestConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-    await handleUpdateTestConfirm(test, event);
-    
-    // Очистить состояние categoryData
-    setTestData([]);
-    
-    await getCategoryTestsAsync(searchParams.id);
-  };
-
-  const deleteTestConfirm = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-    await handleDeleteTestConfirm(test, event);
+  const deleteTestConfirmAsync = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+    await handleDeleteTestConfirmAsync(test, event);
     
     // Очистить состояние categoryData
     setTestData([]);
@@ -102,7 +93,7 @@ export default function CategoryTests({ searchParams }: { searchParams: { id: st
                 />
                 <i className='bx bx-user-circle'></i>
               </div>
-              <input type="button" value="Add test" className={styles.buttonAddTest}onClick={handleAddTest} />
+              <input type="button" value="Add test" className={styles.buttonAddTest}onClick={addTestAsync} />
               <input type="button" value="Back" className={styles.buttonBack} onClick={toggleFormVisibility}/>
             </div>
           </div>
@@ -135,21 +126,21 @@ export default function CategoryTests({ searchParams }: { searchParams: { id: st
                   <button
                     className={styles.buttonUpdateTest}
                     title="Update the test"
-                    onClick={(event) => handleUpdateTest(test, event)}
+                    onClick={(event) => handleUpdateTestAsync(test, event)}
                   >
                     <Image src="/images/Pencil.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonConfirmUpdateTest} 
                     title="Confirm update"
-                    onClick={(event) => updateTestConfirm(test, event)}
+                    onClick={(event) => handleUpdateTestConfirmAsync(test, event)}
                   >
                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonCancellationUpdateTest} 
                     title="Cancellation update"
-                    onClick={(event) => handleCancellation(test, event)}
+                    onClick={(event) => handleCancellationAsync(test, event)}
                   >
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>
@@ -157,21 +148,21 @@ export default function CategoryTests({ searchParams }: { searchParams: { id: st
                   <button
                     className={styles.buttonDeleteTest}
                     title="Delete the test"
-                    onClick={handleDeleteTest}
+                    onClick={handleDeleteTestAsync}
                   >
                     <Image src="/images/Delete.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonConfirmDeleteTest} 
                     title="Confirm delete"
-                    onClick={(event) => deleteTestConfirm(test, event)}
+                    onClick={(event) => deleteTestConfirmAsync(test, event)}
                   >
                      <Image src="/images/CheckMark.png" alt="Описание изображения" height={20} width={20} />
                   </button>
                   <button 
                     className={styles.buttonCancellationDeleteTest} 
                     title="Cancellation delete"
-                    onClick={(event) => handleCancellation(test, event)}
+                    onClick={(event) => handleCancellationAsync(test, event)}
                   >
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>
