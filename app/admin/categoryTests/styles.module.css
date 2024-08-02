@@ -251,7 +251,8 @@ padding-left: 1em;
 .buttonDeleteTest,
 .buttonConfirmDeleteTest,
 .buttonCancellationDeleteTest,
-.openFormAddTest {
+.openFormAddTest,
+.testQuestions {
   background-color: transparent;
   border: none;
   padding: 0;

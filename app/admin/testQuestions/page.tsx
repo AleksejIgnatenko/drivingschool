@@ -9,7 +9,7 @@ import { fetchGetAllTestsAsync } from '@/app/services/testServices/fetchGetAllTe
 import Image from 'next/image';
 import { handleAddQuestionAsync, handleUpdateQuestionAsync, handleUpdateQuestionConfirmAsync, handleDeleteQuestionAsync, handleDeleteQuestionConfirmAsync, handleCancellationAsync } from './script';
 
-export default function testQuestions({ searchParams }: { searchParams: { idTest: string } }) {
+export default function testQuestions({ searchParams }: { searchParams: { id: string } }) {
   const hasBeenCalledRef = useRef(false);
   const [testData, setTestData] = useState<TestModel[]>([]);
   const [questionData, setQuestionData] = useState<QuestionModel[]>([]);
@@ -20,7 +20,7 @@ export default function testQuestions({ searchParams }: { searchParams: { idTest
           hasBeenCalledRef.current = true;
 
           getAllTestsAsync();
-          getTestQuestionsAsync(searchParams.idTest);
+          getTestQuestionsAsync(searchParams.id);
       }
   }, []);
 
@@ -48,7 +48,7 @@ export default function testQuestions({ searchParams }: { searchParams: { idTest
 
   const addQuestionAsync = async () => { 
       await handleAddQuestionAsync();
-      await getTestQuestionsAsync(searchParams.idTest);
+      await getTestQuestionsAsync(searchParams.id);
   };
 
 const deleteTestConfirmAsync = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
@@ -57,7 +57,7 @@ const deleteTestConfirmAsync = async (question: QuestionModel, event: React.Mous
   // Очистить состояние categoryData
   setQuestionData([]);
   
-  await getTestQuestionsAsync(searchParams.idTest);
+  await getTestQuestionsAsync(searchParams.id);
 };
 
   return (

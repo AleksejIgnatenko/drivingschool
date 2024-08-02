@@ -1,6 +1,7 @@
 'use client';
 
 import styles from './styles.module.css';
+import Link from 'next/link';
 import { useEffect, useState, useRef } from "react";
 import { TestModel } from '@/app/Models/TestModel/TestModel';
 import { CategoryModel } from '@/app/Models/CategoryModel/CategoryModel';
@@ -166,6 +167,10 @@ export default function CategoryTests({ searchParams }: { searchParams: { id: st
                   >
                       <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
                   </button>
+
+                  <Link key={test.id} href={`/admin/testQuestions?id=${test.id}`} title='Test questions'>
+                    <Image src="/images/Question.png" alt="Описание изображения" height={20} width={20} className={styles.testQuestions} />
+                  </Link>
                 </div>
               </div>
             </div>
