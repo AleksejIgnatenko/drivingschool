@@ -18,6 +18,14 @@
   border-bottom: 1px solid white;
 }
 
+.menu :global(.ant-menu-item:hover) {
+  text-decoration: none;
+}
+
+.menu :global(.ant-menu-item-active) {
+  text-decoration: none;
+}
+
 .main {
   display: flex;
   flex-direction: column;

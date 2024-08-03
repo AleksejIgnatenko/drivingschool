@@ -12,71 +12,73 @@ import Cookies from 'js-cookie';
 import { isAdminOrModeratorAsync } from "./services/userServices/isAdminOrModeratorAsync";
 
 const inter = Inter({ subsets: ["latin"] });
-const menuItems = [
-  { key: "home", label: <Link href={"/"} style={{ color: "white" }}>Home</Link> },
-];
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [cookieChecked, setCookieChecked] = useState(false);
-  const [menuItemsUpdated, setMenuItemsUpdated] = useState(menuItems);
+const [menuItems, setMenuItems] = useState<any[]>([]);
   const hasBeenCalledRef = useRef(false);
 
   useEffect(() => {
-    if (!hasBeenCalledRef.current) {
-      hasBeenCalledRef.current = true;
+    const checkUserRoleAsync = async () => {
+      if (!hasBeenCalledRef.current) {
+        hasBeenCalledRef.current = true;
 
-      // Проверяем наличие файла cookie с именем 'jwtToken'
-      const jwtToken = Cookies.get('jwtToken');
+        // Проверяем наличие файла cookie с именем 'jwtToken'
+        const jwtToken = Cookies.get('jwtToken');
+        const isAdminOrModerator = await isAdminOrModeratorAsync();
 
-      // Если файл cookie есть, добавляем новый элемент в массив menuItems
-      const updatedMenuItems = [...menuItems, { key: "profile", label: <Link href={"/profile"} style={{ color: "white" }}>Profile</Link> }];
-      setMenuItemsUpdated(updatedMenuItems);
-
-      // Вызываем функцию isAdminOrModerator с использованием ключевого слова await
-      const checkIsAdminOrModerator = async () => {
-        try {
-          // Проверяем, если пользователь находится на главной странице "/"
-          if (window.location.pathname === '/') {
-            const isAdminOrModeratorResult = await isAdminOrModeratorAsync();
-            if (isAdminOrModeratorResult) {
-              // Если пользователь является админом или модератором и находится на странице "/"
-              window.location.href = '/admin';
-            }
-          } else if (window.location.pathname.includes('/admin')) {
-            const isAdminOrModeratorResult = await isAdminOrModeratorAsync();
-            if (!isAdminOrModeratorResult) {
-              // Если пользователь не является админом или модератором и находится на странице "/admin"
-              window.location.href = '/';
-            }
-          }
-        } catch (error) {
-          // Обработка ошибки
+        if (jwtToken && isAdminOrModerator) {
+          // Eсли есть cookie и роль admin или moderator
+          const menuItems = [
+            { key: "home", label: <Link href={"/admin"} style={{ color: "white" }}>Home</Link> },
+            { key: "profile", label: <Link href={"/profile"} style={{ color: "white" }}>Profile</Link> },
+          ];
+          setMenuItems(menuItems);
+        } else if (jwtToken ) {
+          //Если есть файлы cookie
+          const menuItems = [
+            { key: "home", label: <Link href={"/"} style={{ color: "white" }}>Home</Link> },
+            { key: "profile", label: <Link href={"/profile"} style={{ color: "white" }}>Profile</Link> },
+          ];
+          setMenuItems(menuItems);
+        } else {
+          // Если файла cookie нет
+          const menuItems = [
+            { key: "home", label: <Link href={"/"} style={{ color: "white" }}>Home</Link> },
+            { key: "signIn", label: <Link href={"/login"} style={{ color: "white" }}>Login</Link> },
+          ];
+          setMenuItems(menuItems);
         }
-      };
 
-      checkIsAdminOrModerator();
+        // Проверка на наличие роли admin или moderator
+        if (window.location.pathname === '/') {
+          const isAdminOrModeratorResult = await isAdminOrModeratorAsync();
+          if (isAdminOrModeratorResult) {
+            // Если пользователь является админом или модератором и находится на странице "/"
+            window.location.href = '/admin';
+          }
+        } else if (window.location.pathname.includes('/admin')) {
+          const isAdminOrModeratorResult = await isAdminOrModeratorAsync();
+          if (!isAdminOrModeratorResult) {
+            // Если пользователь не является админом или модератором и находится на странице "/admin"
+            window.location.href = '/';
+          }
+        }
 
-      // Если файл cookie не существует, добавляем другой элемент в массив menuItems
-      if (!jwtToken) {
-        const updatedMenuItems = [...menuItems, { key: "signIn", label: <Link href={"/login"} style={{ color: "white" }}>Login</Link> }];
-        setMenuItemsUpdated(updatedMenuItems);
+        if ((window.location.pathname === '/login' && jwtToken) || (window.location.pathname === '/register' && jwtToken)) {
+          window.location.href = '/profile';
+        }
+
+        if (window.location.pathname === '/profile' && !jwtToken) {
+          window.location.href = '/login';
+        }
       }
+    };
 
-      if ((window.location.pathname === '/login' && jwtToken) || (window.location.pathname === '/register' && jwtToken)) {
-        window.location.href = '/profile'; 
-      }
-
-      if (window.location.pathname === '/profile' && !jwtToken) {
-        window.location.href = '/login';
-      }
-
-      setCookieChecked(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    checkUserRoleAsync();
   }, []);
 
   return (
@@ -85,7 +87,7 @@ export default function RootLayout({
           <Layout>
             <Header className={styles.header}>
              <Menu
-                items={menuItemsUpdated}
+                items={menuItems}
                 mode="horizontal"
                 className={styles.menu}
               />

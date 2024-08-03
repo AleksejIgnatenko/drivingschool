@@ -54,7 +54,7 @@
     color: white;
   }
   
-  .container > input[type="text"],
+  .container > div > input[type="text"],
   .container > div > input[type="email"],
   .container > div > input[type="password"] {
     width: 350px;
