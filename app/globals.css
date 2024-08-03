@@ -27,3 +27,13 @@ a {
   text-decoration: none;
   color: white;
 }
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+:where(.css-dev-only-do-not-override-98ntnt).ant-menu-light.ant-menu-horizontal > .ant-menu-item:not(:hover)::after {
+  border-bottom-width: 0px;
+}
