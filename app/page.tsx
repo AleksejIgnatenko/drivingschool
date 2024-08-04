@@ -1,20 +1,48 @@
-import { Inter } from "next/font/google";
+'use client';
+
 import Link from "next/link";
 import styles from './page.module.css'; // Make sure the file path is correct
-
-const inter = Inter({ subsets: ["latin"] });
+import { useEffect, useState, useRef } from "react";
+import { CategoryModel } from '@/app/Models/CategoryModel/CategoryModel';
+import { fetchGetAllCategoryAsync } from '@/app/services/categoryServices/fetchGetAllCategoryAsync';
 
 export default function Home() {
+  const hasBeenCalledRef = useRef(false);
+  const [categoryData, setCategoryData] = useState<CategoryModel[]>([]);
+  const [isAddCategoryFormVisible, setIsFormVisible] = useState(false);
+
+  useEffect(() => {
+      if (!hasBeenCalledRef.current) {
+          hasBeenCalledRef.current = true;
+
+          getAllCategoryAsync();
+      }
+  }, []);
+
+  const getAllCategoryAsync = async () => { 
+    const categories = await fetchGetAllCategoryAsync();
+    if (categories) {
+      setCategoryData(categories);
+    } else {
+      // Обработка случая, когда данные о категориях недоступны
+    }
+  };
   return (
     <main className={styles.main}>
-      <div id="backgroundImage1" className={styles.backgroundImage} style={{ backgroundImage: `url('/images/Sunset.png')` }}>
-        <div className={styles.content}>
-          <Link className={styles.text} href={"#backgroundImage"}>Welcome</Link>
-        </div>
-      </div>
-      <div id="backgroundImage" className={styles.backgroundImage} style={{ backgroundImage: `url('/images/Sunset.png')` }}>
-        <div className={styles.content1}>
-          <Link className={styles.text} href={"#backgroundImage1"}>Welcome</Link>
+      <div className={`${styles.backgroundContainer}`}>
+        <div className={styles.cardContainer}>
+          {categoryData.map((category, index) => (
+            <Link key={category.id} href={`/categoryTest?id=${category.id}`} title={`Test ${category.nameCategory}`}>
+              <div key={index} className={styles.card} data-id={category.id}>
+                <div className={styles.container}>
+                  <div className={styles.content}>
+                    <h3 data-id={category.id} className={`${styles.categoryId}`}>Id: {category.id}</h3>
+                    <h3 id={`categoryName-${category.id}`}>Name category: {category.nameCategory}</h3>
+                  </div>
+                </div>
+              </div>
+            </Link>
+           ))}
         </div>
       </div>
     </main>

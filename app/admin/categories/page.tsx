@@ -49,7 +49,7 @@ export default function Categories() {
   };
 
   return (
-  <main className={styles.main}>
+  <main>
     <div className={`${styles.backgroundContainer} ${isAddCategoryFormVisible ? styles.overlayActive : ''}`}>
       <button
         className={styles.openFormAddCategory}

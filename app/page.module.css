@@ -26,38 +26,81 @@
   text-decoration: none;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
+.main{
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: black;
 }
 
-.backgroundImage {
+.backgroundContainer {
+  background-image: url('/images/Sunset.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh; /* Change max-height to min-height */
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.cardContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
 }
 
-.content, .content1 {
-  position: relative;
+.card {
+  flex-basis: 20%; /* Adjust the width of the cards as needed */
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: "Poppins", sans-serif;
 }
 
-.text {
-  font-size: 24px;
+.container {
+  background: transparent;
+  color: #fff;
+  border-radius: 12px;
+  backdrop-filter: blur(7px);
+  width: 420px;
+  height: 150px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  justify-content: center;
+}
+  
+.container:hover {
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+}
+
+.container ::placeholder {
   color: white;
 }
+
+.content {
+  justify-content: space-between; /* Distribute the content vertically */
+  align-items: center;
+  display: flex;
+  flex-direction: column; /* Arrange the content in a column */
+  width: 100%;
+}
+
+.categoryId{
+  display: none;
+}
+
 /* .footer {
   position: absolute;
   bottom: 0;
