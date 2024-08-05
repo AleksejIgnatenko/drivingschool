@@ -1,6 +1,5 @@
 import { QuestionModelRequest } from "@/app/Models/QuestionModel/QuestionModelRequest";
 import { getCookie } from "@/app/Infrastructure/getCookie";
-import { tree } from "next/dist/build/templates/app-page";
 
 export const fetchAddQuestionAsync = async (questionModelRequest: QuestionModelRequest): Promise<boolean> => {
     try{

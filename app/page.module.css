@@ -65,7 +65,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-.container {
+.container, .button {
   background: transparent;
   color: #fff;
   border-radius: 12px;

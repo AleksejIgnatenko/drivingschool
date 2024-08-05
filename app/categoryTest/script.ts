@@ -7,6 +7,4 @@ export const handleCheckingTestAsync = async (questionData: QuestionModel[], use
             countCorrectAnswerUser++;
         }
     }
-    console.log(userAnswers)
-    console.log(countCorrectAnswerUser);
   };

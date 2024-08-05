@@ -1,4 +1,3 @@
-
 'use client'
 
 import { Inter } from "next/font/google";
@@ -54,25 +53,17 @@ const [menuItems, setMenuItems] = useState<any[]>([]);
         }
 
         // Проверка на наличие роли admin или moderator
-        if (window.location.pathname === '/') {
-          const isAdminOrModeratorResult = await isAdminOrModeratorAsync();
-          if (isAdminOrModeratorResult) {
-            // Если пользователь является админом или модератором и находится на странице "/"
+        if (window.location.pathname === '/' && isAdminOrModerator) {
             window.location.href = '/admin';
-          }
-        } else if (window.location.pathname.includes('/admin')) {
-          const isAdminOrModeratorResult = await isAdminOrModeratorAsync();
-          if (!isAdminOrModeratorResult) {
-            // Если пользователь не является админом или модератором и находится на странице "/admin"
+        } else if (window.location.pathname.includes('/admin') && !isAdminOrModerator) {
             window.location.href = '/';
-          }
         }
 
         if ((window.location.pathname === '/login' && jwtToken) || (window.location.pathname === '/register' && jwtToken)) {
           window.location.href = '/profile';
         }
 
-        if (window.location.pathname === '/profile' && !jwtToken) {
+        if (window.location.pathname.includes('/profile') && !jwtToken) {
           window.location.href = '/login';
         }
       }
