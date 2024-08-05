@@ -127,7 +127,6 @@ export const handleUpdateQuestionConfirmAsync = async (questionModel: QuestionMo
             }
 
             const updatedQuestion = await fetchUpdateQuestionAsync(questionModel.id, updateQuestionRequest);
-            console.log(updatedQuestion);
             if (updatedQuestion){
                 // Update the user's card
                 const questionIdElement = card.querySelector("h3:nth-of-type(1)");

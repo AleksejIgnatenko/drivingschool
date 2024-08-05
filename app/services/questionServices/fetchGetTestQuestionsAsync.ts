@@ -14,7 +14,6 @@ export const fetchGetTestQuestionsAsync = async (idTest: string): Promise<Questi
 
     if (response.ok) {
       const responseData = await response.json();
-      console.log(responseData);
       return responseData.map((data: any) => ({
         id: data.id,
         nameTest: data.nameTest,

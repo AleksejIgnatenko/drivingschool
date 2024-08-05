@@ -10,7 +10,7 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
-  const handleLogin = async () => {
+  const handleLoginAsync = async () => {
     const loginUserRequest: LoginUserModelRequests = {
       email,
       password,
@@ -47,7 +47,7 @@ export default function Login() {
               <span className={styles.RM}>Remember me</span>
               <span className={styles.FP}>Forget Password</span>
           </div>
-            <input type="button" value="Login" className={styles.buttonSignIn} onClick={handleLogin} />
+            <input type="button" value="Login" className={styles.buttonSignIn} onClick={handleLoginAsync} />
           <Link href={"/"}>
               <input type="button" value="Back" className={styles.buttonBack} />
           </Link>
