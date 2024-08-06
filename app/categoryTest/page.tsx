@@ -2,13 +2,13 @@
 
 import styles from './styles.module.css';
 import { useEffect, useState, useRef } from "react";
-import { QuestionModel } from '@/app/Models/QuestionModel/QuestionModel';
-import { fetchGetCategoryTestAsync } from '../services/categoryServices/fetchGetCategoryTestAsync';
+import { CategoryTestModel } from '../Models/TestModel/TestCategorymodel';
+import { fetchGetCategoryTestAsync } from '../services/testServices/fetchGetCategoryTestAsync';
 import { handleCheckingTestAsync } from './script';
 
 export default function CategoryTest({ searchParams }: { searchParams: { id: string } }) {
   const hasBeenCalledRef = useRef(false);
-  const [questionData, setQuestionData] = useState<QuestionModel[]>([]);
+  const [testData, setQuestionData] = useState<CategoryTestModel>();
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
 
   useEffect(() => {
@@ -35,14 +35,14 @@ export default function CategoryTest({ searchParams }: { searchParams: { id: str
   };
 
   const handleSubmit = () => {
-    handleCheckingTestAsync(questionData, userAnswers);
+    handleCheckingTestAsync(testData, userAnswers);
   };
 
   return (
     <main className={styles.main}>
       <div className={`${styles.backgroundContainer}`}>
         <div className={styles.cardContainer}>
-          {questionData.map((question, index) => (
+          {testData?.questions.map((question, index) => (
             <div key={index} className={styles.card} data-id={question.id}>
               <div className={styles.container}>
                 <div className={styles.content}>

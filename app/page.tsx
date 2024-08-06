@@ -9,7 +9,6 @@ import { handleGetTestCategory } from './script';
 export default function Home() {
   const hasBeenCalledRef = useRef(false);
   const [categoryData, setCategoryData] = useState<CategoryModel[]>([]);
-  const [isAddCategoryFormVisible, setIsFormVisible] = useState(false);
 
   useEffect(() => {
       if (!hasBeenCalledRef.current) {
