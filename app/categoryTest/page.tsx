@@ -43,7 +43,7 @@ export default function CategoryTest({ searchParams }: { searchParams: { id: str
       <div className={`${styles.backgroundContainer}`}>
         <div className={styles.cardContainer}>
           {testData?.questions.map((question, index) => (
-            <div key={index} className={styles.card} data-id={question.id}>
+            <div key={index} className={styles.card} id={`question-${question.id}`}>
               <div className={styles.container}>
                 <div className={styles.content}>
                   <h3 id={`questionText-${question.id}`}>Question text: {question.questionText}</h3>
