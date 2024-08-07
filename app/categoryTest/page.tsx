@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 import { useEffect, useState, useRef } from "react";
 import { CategoryTestModel } from '../Models/TestModel/TestCategorymodel';
 import { fetchGetCategoryTestAsync } from '../services/testServices/fetchGetCategoryTestAsync';
-import { handleCheckingTestAsync } from './script';
+import { handleCheckingTestAsync, handleRestartTest } from './script';
 
 export default function CategoryTest({ searchParams }: { searchParams: { id: string } }) {
   const hasBeenCalledRef = useRef(false);
@@ -95,10 +95,18 @@ export default function CategoryTest({ searchParams }: { searchParams: { id: str
             </div>
           ))}
           <input
+            id='buttonPass'
             type="button"
             value="Pass"
             className={styles.buttonPass}
             onClick={handleSubmit}
+          />
+          <input
+            id='buttonRestartTest'
+            type="button"
+            value="Restart"
+            className={styles.buttonRestartTest}
+            onClick={handleRestartTest}
           />
         </div>
       </div>

@@ -1,9 +1,13 @@
+import { getCookie } from '@/app/Infrastructure/getCookie';
+
 export interface CreateCategoryModelRequest {
     nameCategory: string;
 }
 
 export const fetchAddCategoryAsync = async (nameCategory: string): Promise<boolean> => {
     try {
+        const jwtToken = getCookie('jwtToken');
+
         const category: CreateCategoryModelRequest = {
             nameCategory
         };
@@ -12,6 +16,7 @@ export const fetchAddCategoryAsync = async (nameCategory: string): Promise<boole
             method: "POST",
             headers: {
                 "content-type": "application/json",
+                "Authorization": `Bearer ${jwtToken}`,
             },
             body: JSON.stringify(category)
         });

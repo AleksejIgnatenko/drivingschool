@@ -15,6 +15,17 @@ export const handleCheckingTestAsync = async (test: CategoryTestModel | undefine
         }
     }
 
+    const buttonPass = document.getElementById('buttonPass');
+    const buttonRestartTest = document.getElementById('buttonRestartTest');
+    buttonPass!.style.display = 'none';
+    buttonRestartTest!.style.display = 'inline-block';
+
+    if(countCorrectAnswerUser > 8) {
+        alert("Ваш результат: " + countCorrectAnswerUser + " (экзамен сдалн)")
+    } else {
+        alert("Ваш результат: " + countCorrectAnswerUser + " (экзамен не сдалн)")
+    }
+
     const answer: AnswerModelRequest = {
         testId: test.id,
         resultTest: countCorrectAnswerUser
@@ -22,3 +33,7 @@ export const handleCheckingTestAsync = async (test: CategoryTestModel | undefine
 
     fetchAddUserAnswerAsync(answer)
 };
+
+export const handleRestartTest = async() => {
+    window.location.reload();
+}
