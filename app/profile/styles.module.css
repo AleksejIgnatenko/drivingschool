@@ -48,6 +48,52 @@
   margin-left: 50px;
 }
 
+.container > div > input[type="text"] {
+  display: none;
+  width: 350px;
+  height: 40px;
+  background-color: rgba(250, 250, 250, 0.1);
+  border: 2px solid rgba(201, 201, 201, 0.2);
+  border-radius: 15px;
+  color: white;
+  outline: none; /* Remove the default outline */
+  padding-left: 1em;
+}
+
+/* Изменение стиля текста placeholder */
+.container > div > input[type="text"]::placeholder {
+  color: rgba(250, 250, 250, 0.7); /* Цвет текста placeholder */
+}
+
+.container > div > input[type="text"]:focus {
+    outline: 2px solid #afafaf; /* Add a white outline on focus */
+    outline-offset: 1px; /* Adjust the offset of the outline */
+}
+
+.buttonContainer {
+  justify-content: center; /* Center the content vertically */
+  align-items: center;
+  display: flex;
+  flex-direction: row; /* Arrange the content in a row */
+  width: 100%;
+  gap: 10px; /* Add some space between the buttons */
+}
+
+.buttonNameChange,
+.buttonConfirmNameChange,
+.buttonCancellationNameChange {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.buttonConfirmNameChange,
+.buttonCancellationNameChange {
+  display: none;
+}
+
 .buttonBack {
   width: 360px;
   height: 46px;
@@ -62,8 +108,4 @@
 .buttonBack:hover {
   border: 2px solid rgba(255, 255, 255, 0.7);
   cursor: pointer;
-}
-
-.p {
-  color: white;
 }

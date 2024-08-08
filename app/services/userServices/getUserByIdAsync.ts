@@ -1,12 +1,7 @@
 import { getCookie } from '@/app/Infrastructure/getCookie';
+import { UserModel } from '@/app/Models/UserModel/UserModel';
  
-export interface User {
-  userName: string;
-  email: string;
-  resultsTests: Record<string, number[]> | null;
-}
-
-export const getUserByIdAsync = async (): Promise<User | null> => {
+export const getUserByIdAsync = async (): Promise<UserModel | null> => {
   try {
     const jwtToken = getCookie('jwtToken');
 
@@ -21,7 +16,8 @@ export const getUserByIdAsync = async (): Promise<User | null> => {
     if (response.ok) {
       // Если ответ успешный (статус 2xx), получаем информацию о пользователе
       const userData = await response.json();
-      return userData as User;
+      console.log(userData);
+      return userData as UserModel;
     } else {
       // Если ответ не успешный, проверяем статус и обрабатываем ошибку
       const errorMessage = await response.text();
