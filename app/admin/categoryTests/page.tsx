@@ -15,21 +15,22 @@ export default function CategoryTests({ searchParams }: { searchParams: { id: st
   const [categoryData, setCategoryData] = useState<CategoryModel[]>([]);
   const [testData, setTestData] = useState<TestModel[]>([]);
   const [isAddTestFormVisible, setIsFormVisible] = useState(false);
-  useEffect(() => {
-      if (!hasBeenCalledRef.current) {
-          hasBeenCalledRef.current = true;
 
-          getAllCategoryAsync();
-          getCategoryTestsAsync(searchParams.id);
-      }
-  }, []);
+  useEffect(() => {
+    if (!hasBeenCalledRef.current) {
+      hasBeenCalledRef.current = true;
+
+      getAllCategoryAsync();
+      getCategoryTestsAsync(searchParams.id);
+    }
+  }, [searchParams.id]); // Include searchParams.id in the dependency array
 
   const getAllCategoryAsync = async () => { 
     const categories = await fetchGetAllCategoryAsync();
     if (categories) {
       setCategoryData(categories);
     } else {
-      // Обработка случая, когда данные о категориях недоступны
+      // Handle the case where category data is unavailable
     }
   };
 
@@ -38,23 +39,23 @@ export default function CategoryTests({ searchParams }: { searchParams: { id: st
     if (tests) {
       setTestData(tests);
     } else {
-      // Обработка случая, когда данные о категориях недоступны
+      // Handle the case where test data is unavailable
     }
   };
 
   const toggleFormVisibility = () => {
-      setIsFormVisible(!isAddTestFormVisible);
+    setIsFormVisible(!isAddTestFormVisible);
   };
 
   const addTestAsync = async () => { 
-      await handleAddTestAsync();
-      await getCategoryTestsAsync(searchParams.id);
+    await handleAddTestAsync();
+    await getCategoryTestsAsync(searchParams.id);
   };
 
   const deleteTestConfirmAsync = async (test: TestModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
     await handleDeleteTestConfirmAsync(test, event);
     
-    // Очистить состояние categoryData
+    // Clear the testData state
     setTestData([]);
     
     await getCategoryTestsAsync(searchParams.id);

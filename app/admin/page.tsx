@@ -44,31 +44,7 @@ export default function Login() {
             </div>
           </div>
         </Link>
-      </div>
-      <div className={styles.secondRow}>
-        <div className={styles.card}>
-          <div className={styles.container}>
-            <div className={styles.сontent}>
-              <h1>Admin</h1>
-            </div>
-          </div>
-        </div>
-        <div className={styles.card}>
-          <div className={styles.container}>
-            <div className={styles.сontent}>
-              <h1>Admin</h1>
-            </div>
-          </div>
-        </div>
-        <div className={styles.card}>
-          <div className={styles.container}>
-            <div className={styles.сontent}>
-              <h1>Admin</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+      </div>      
     </div>
   );
 }
