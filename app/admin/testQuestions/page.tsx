@@ -9,7 +9,7 @@ import { fetchGetAllTestsAsync } from '@/app/services/testServices/fetchGetAllTe
 import Image from 'next/image';
 import { handleAddQuestionAsync, handleUpdateQuestionAsync, handleUpdateQuestionConfirmAsync, handleDeleteQuestionAsync, handleDeleteQuestionConfirmAsync, handleCancellationAsync } from './script';
 
-export default function testQuestions({ searchParams }: { searchParams: { id: string } }) {
+export default function TestQuestions({ searchParams }: { searchParams: { id: string } }) {
   const hasBeenCalledRef = useRef(false);
   const [testData, setTestData] = useState<TestModel[]>([]);
   const [questionData, setQuestionData] = useState<QuestionModel[]>([]);
@@ -22,7 +22,7 @@ export default function testQuestions({ searchParams }: { searchParams: { id: st
           getAllTestsAsync();
           getTestQuestionsAsync(searchParams.id);
       }
-  }, []);
+  }, [searchParams.id]); // Добавлен searchParams.id в массив зависимостей
 
   const getAllTestsAsync = async () => { 
     const tests = await fetchGetAllTestsAsync();
@@ -51,15 +51,15 @@ export default function testQuestions({ searchParams }: { searchParams: { id: st
       await getTestQuestionsAsync(searchParams.id);
   };
 
-const deleteTestConfirmAsync = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-  await handleDeleteQuestionConfirmAsync(question, event);
+  const deleteTestConfirmAsync = async (question: QuestionModel, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+    await handleDeleteQuestionConfirmAsync(question, event);
+    
+    // Очистить состояние categoryData
+    setQuestionData([]);
+    
+    await getTestQuestionsAsync(searchParams.id);
+  };
   
-  // Очистить состояние categoryData
-  setQuestionData([]);
-  
-  await getTestQuestionsAsync(searchParams.id);
-};
-
   return (
   <main className={styles.main}>
     <div className={`${styles.backgroundContainer} ${isAddQuestionFormVisible ? styles.overlayActive : ''}`}>

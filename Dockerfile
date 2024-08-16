@@ -1,16 +1,24 @@
-FROM node:22.3.0-alpine as builder
+FROM node:alpine
+
 WORKDIR /app
+
+# Copy package.json and package-lock.json if available
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
+
+# Install js-cookie and Ant Design
+RUN npm install js-cookie antd
+
+# Copy the entire project to the Docker container
 COPY . .
+
+# Build the Next.js application
 RUN npm run build
 
-FROM node:22.3.0-alpine
-WORKDIR /app
-COPY --from=builder /app/next.config.mjs ./next.config.mjs
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
+# Expose the correct port
+EXPOSE 3000
 
+# Run the Next.js application
 CMD ["npm", "start"]

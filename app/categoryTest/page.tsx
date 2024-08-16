@@ -17,7 +17,7 @@ export default function CategoryTest({ searchParams }: { searchParams: { id: str
 
           getCategoryTestAsync(searchParams.id);
       }
-  }, []);
+  }, [searchParams.id]); // Добавлен searchParams.id в массив зависимостей
 
   const getCategoryTestAsync = async (idCategory: string) => { 
     const questions = await fetchGetCategoryTestAsync(idCategory);
