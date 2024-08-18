@@ -4,7 +4,7 @@ export const isAdminOrModeratorAsync = async (): Promise<boolean> => {
     try {
       const jwtToken = getCookie('jwtToken');
 
-        const response = await fetch("https://localhost:7103/Users/isAdminOrModerator", {
+        const response = await fetch("api/Users/isAdminOrModerator", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
