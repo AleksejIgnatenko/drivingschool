@@ -10,7 +10,7 @@ export const fetchUpdateCategoryAsync = async (categoryId: string, newCategoryNa
       nameCategory: newCategoryName,
     }
 
-    const response = await fetch(`https://localhost:7103/Category/${categoryId}`, {
+    const response = await fetch(`/api/Category/${categoryId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

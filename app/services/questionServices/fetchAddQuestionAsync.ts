@@ -5,7 +5,7 @@ export const fetchAddQuestionAsync = async (questionModelRequest: QuestionModelR
     try{
         const jwtToken = getCookie('jwtToken');
 
-        const response = await fetch("https://localhost:7103/Question", {
+        const response = await fetch("/api/Question", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

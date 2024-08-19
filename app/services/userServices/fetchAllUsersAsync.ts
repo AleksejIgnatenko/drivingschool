@@ -5,7 +5,7 @@ export const fetchAllUsersAsync = async (): Promise<UserModel[] | null> => {
   try {
     const jwtToken = getCookie('jwtToken');
 
-    const response = await fetch("https://localhost:7103/Users/getAllUsers", {
+    const response = await fetch("/api/Users/getAllUsers", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -14,7 +14,7 @@ export const fetchAllUsersAsync = async (): Promise<UserModel[] | null> => {
     });
 
     if (response.ok) {
-      const responseData = await response.json()
+      const responseData = await response.json();
       return responseData.map((data: any) => ({
         id: data.id,
         userName: data.userName,

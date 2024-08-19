@@ -4,7 +4,7 @@ export const fetchDeleteCategoryAsync = async (id: string) => {
   try {
     const jwtToken = getCookie('jwtToken');
 
-    const response = await fetch(`https://localhost:7103/Category/${id}`, {
+    const response = await fetch(`/api/Category/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

@@ -11,7 +11,7 @@ export const fetchUpdateTestAsync = async (testId: string, categoryId: string, n
         nameTest: newTestName
       };
 
-    const response = await fetch(`https://localhost:7103/Test/${testId}`, {
+    const response = await fetch(`/api/Test/${testId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -4,7 +4,7 @@ import { getCookie } from '@/app/Infrastructure/getCookie';
 export const fetchGetTestQuestionsAsync = async (idTest: string): Promise<QuestionModel[] | null> => {
   try {
     const jwtToken = getCookie('jwtToken');
-    const response = await fetch(`https://localhost:7103/Question/getTestQuestions?idTest=${idTest}`, {
+    const response = await fetch(`/api/Question/getTestQuestions?idTest=${idTest}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

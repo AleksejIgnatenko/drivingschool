@@ -5,7 +5,7 @@ export const fetchAddModeratorAsync = async (userId: string) => {
     try {
         const jwtToken = getCookie('jwtToken');
 
-        const response = await fetch(`https://localhost:7103/Users/addModeratorRole/${userId}`, {
+        const response = await fetch(`/api/Users/addModeratorRole/${userId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

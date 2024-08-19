@@ -5,7 +5,7 @@ export const getUserByIdAsync = async (): Promise<UserModel | null> => {
   try {
     const jwtToken = getCookie('jwtToken');
 
-    const response = await fetch("https://localhost:7103/Users/getUserInformationById", {
+    const response = await fetch("/api/Users/getUserInformationById", {
       method: "GET",
       headers: {
         "content-type": "application/json",

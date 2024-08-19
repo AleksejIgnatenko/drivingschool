@@ -5,7 +5,7 @@ export const fetchAddTestAsync = async (testModelRequest: TestModelRequest): Pro
     try {
         const jwtToken = getCookie('jwtToken');
 
-        const response = await fetch("https://localhost:7103/Test", {
+        const response = await fetch("/api/Test", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

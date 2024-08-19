@@ -3,7 +3,7 @@ import { LoginUserModelRequests } from '@/app/Models/UserModel/LoginUserModelReq
 
 export const loginUserAsync = async (userRequest: LoginUserModelRequests) => {
   try {
-    const response = await fetch("https://localhost:7103/Users/login", {
+    const response = await fetch("/api/Users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

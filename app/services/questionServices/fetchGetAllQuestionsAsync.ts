@@ -5,7 +5,7 @@ export const fetchGetAllQuestionsAsync = async (): Promise<QuestionModel[] | nul
   try {
     const jwtToken = getCookie('jwtToken');
 
-    const response = await fetch("https://localhost:7103/Question/getAllQuestions", {
+    const response = await fetch("/api/Question/getAllQuestions", {
       method: "GET",
       headers: {
         "content-type": "application/json",

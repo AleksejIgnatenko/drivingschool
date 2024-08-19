@@ -12,7 +12,7 @@ export const fetchAddCategoryAsync = async (nameCategory: string): Promise<boole
             nameCategory
         };
 
-        const response = await fetch("https://localhost:7103/Category", {
+        const response = await fetch("/api/Category", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

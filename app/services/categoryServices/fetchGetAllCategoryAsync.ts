@@ -5,7 +5,7 @@ export const fetchGetAllCategoryAsync = async (): Promise<CategoryModel[] | null
   try {
     const jwtToken = getCookie('jwtToken');
 
-    const response = await fetch("api/Category/getAllCategory", {
+    const response = await fetch("/api/Category/getAllCategory", {
       method: "GET",
       headers: {
         "content-type": "application/json",

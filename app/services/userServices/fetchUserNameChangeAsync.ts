@@ -5,7 +5,7 @@ export const fetchUserNameChangeAsync = async (userId: string, newUserName: stri
     try {
         const jwtToken = getCookie('jwtToken');
 
-        const response = await fetch(`https://localhost:7103/Users/userNameChange/${userId}`, {
+        const response = await fetch(`/api/Users/userNameChange/${userId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

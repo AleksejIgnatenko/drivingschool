@@ -5,7 +5,7 @@ export const fetchAddUserAnswerAsync = async (answer: AnswerModelRequest): Promi
     try {
         const jwtToken = getCookie('jwtToken');
 
-        const response = await fetch("https://localhost:7103/AnswerUserTest", {
+        const response = await fetch("/api/AnswerUserTest", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

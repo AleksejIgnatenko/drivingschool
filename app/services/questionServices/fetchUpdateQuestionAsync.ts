@@ -6,7 +6,7 @@ export const fetchUpdateQuestionAsync = async(questionId: string, updateQuestion
     try {
         const jwtToken = getCookie('jwtToken');
         console.log(questionId);
-        const response = await fetch(`https://localhost:7103/Question/${questionId}`, {
+        const response = await fetch(`/api/Question/${questionId}`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",

@@ -2,7 +2,7 @@ import { RegisterUserModelRequest } from "@/app/Models/UserModel/RegisterUserMod
 
 export const registerUserAsync = async (userRequest: RegisterUserModelRequest) => {
     try {
-        const response = await fetch("https://localhost:7103/Users/register", {
+        const response = await fetch("/api/Users/register", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
