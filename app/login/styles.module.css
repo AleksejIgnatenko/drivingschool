@@ -105,7 +105,6 @@
 .buttonSignIn {
   width: 360px;
   height: 46px;
-  margin-right: 25px;
   border-radius: 15px;
   background-color: #fff;
   font-size: 18px;
@@ -117,7 +116,6 @@
 .buttonBack {
   width: 360px;
   height: 46px;
-  margin-right: 25px;
   border-radius: 15px;
   background-color: transparent; /* Удалите задний цвет */
   font-size: 18px;

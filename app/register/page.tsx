@@ -15,12 +15,20 @@ export default function Register() {
   const [password, setPassword] = useState('');
 
   const handleRegister = async () => {
-    const registerUserRequest: RegisterUserModelRequest = {
-      userName,
-      email,
-      password,
-    };
-    await registerUserAsync(registerUserRequest);
+    const repeatPasswordInput = document.getElementById('repeatPassword') as HTMLInputElement;
+    const errorMessages = document.getElementById('errorMessages') as HTMLElement;
+    if(password === repeatPasswordInput.value) {
+      const registerUserRequest: RegisterUserModelRequest = {
+        userName,
+        email,
+        password,
+      };
+      errorMessages.textContent = "";
+      await registerUserAsync(registerUserRequest);
+    } else {
+      errorMessages.style.display = "inline-block";
+      errorMessages.textContent = "Пароли не совпадают";
+    }
   };
 
   return (
@@ -67,16 +75,20 @@ export default function Register() {
             <i className='bx bx-lock-alt'></i>
           </div>
           <div className={styles.txtBox}>
-            <input type="password" placeholder="Repeat password" />
+            <input
+              id='repeatPassword' 
+              type="password" 
+              placeholder="Repeat password" />
             <i className='bx bx-lock-alt'></i>
           </div>
-          <input type="button" value="Register" className={styles.buttonSignIn} onClick={handleRegister} />
+          <p id='errorMessages' className={styles.errorMessages}></p>
+          <input type="button" value="Register" className={styles.buttonRegister} onClick={handleRegister} />
           <Link href={"/"}>
             <input type="button" value="Back" className={styles.buttonBack} />
           </Link>
           <p>
             Already have an account?
-            <Link href={"/login"} className={styles.register}>Login</Link>
+            <Link href={"/login"} className={styles.login}>Login</Link>
           </p>
         </div>
       </div>

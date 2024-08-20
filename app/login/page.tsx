@@ -42,11 +42,6 @@ export default function Login() {
                         />
                         <i className='bx bx-lock-alt'></i>
                     </div>
-                    <div className={styles.RMF}>
-                        <input type="checkbox" className={styles.box} />
-                        <span className={styles.RM}>Remember me</span>
-                        <span className={styles.FP}>Forget Password</span>
-                    </div>
                     <input type="button" value="Login" className={styles.buttonSignIn} onClick={handleLoginAsync} />
                     <Link href={"/"}>
                         <input type="button" value="Back" className={styles.buttonBack} />
