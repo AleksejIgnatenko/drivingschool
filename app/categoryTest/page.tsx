@@ -109,6 +109,7 @@ export default function CategoryTest({ searchParams }: { searchParams: { id: str
             onClick={handleRestartTest}
           />
         </div>
+        <p id='errorMessages' className={styles.errorMessages}></p>
       </div>
     </main>
   );

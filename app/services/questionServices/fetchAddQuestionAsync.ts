@@ -16,6 +16,12 @@ export const fetchAddQuestionAsync = async (questionModelRequest: QuestionModelR
 
         if(response.ok){
             return true;
+        } else if (response.status === 400) {
+            const errorMessages = document.getElementById('errorMessages') as HTMLElement;
+            errorMessages.style.display = "inline-block";
+            const errorMessage = await response.text();
+            errorMessages.textContent = errorMessage;
+            return false;
         } else {
             // Если ответ не успешный, проверяем статус и обрабатываем ошибку
             const errorMessage = await response.text();

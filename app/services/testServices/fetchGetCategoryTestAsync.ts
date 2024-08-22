@@ -29,6 +29,12 @@ export const fetchGetCategoryTestAsync = async (idCategory: string): Promise<Cat
           correctAnswer: question.correctAnswer
         }))
       });
+    } else if (response.status === 400) {
+      const errorMessages = document.getElementById('errorMessages') as HTMLElement;
+      errorMessages.style.display = "inline-block";
+      const errorMessage = await response.text();
+      errorMessages.textContent = errorMessage;
+      return null
     } else {
       const errorMessage = await response.text();
       console.error('Error fetching get category:', errorMessage);

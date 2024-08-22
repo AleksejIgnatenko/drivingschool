@@ -11,14 +11,16 @@ export const registerUserAsync = async (userRequest: RegisterUserModelRequest) =
         });
 
         if (response.ok) {
-            // Если ответ успешный (статус 2xx), получаем id пользователя
-            // const userId = await response.json();
-            // console.log('User created with ID:', userId);
             window.location.href = '/';
-        } else {
-            // Если ответ не успешный, проверяем статус и обрабатываем ошибку
+        } else if (response.status === 400) {
+            const errorMessages = document.getElementById('errorMessages') as HTMLElement;
+            errorMessages.style.display = "inline-block";
             const errorMessage = await response.text();
-            console.error('User registration error:', errorMessage);
+            errorMessages.textContent = errorMessage;
+        } else {
+            // Обработка других ошибочных статусов
+            const errorMessage = await response.text();
+            console.error('Server error:', errorMessage);
         }
     } catch (error) {
         console.error('Error fetching:', error);

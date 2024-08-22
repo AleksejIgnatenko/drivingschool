@@ -99,6 +99,7 @@ export default function CategoryTests({ searchParams }: { searchParams: { id: st
               <input type="button" value="Back" className={styles.buttonBack} onClick={toggleFormVisibility}/>
             </div>
           </div>
+          <p id='errorMessages' className={styles.errorMessages}></p>
         </form>
       )}
 
@@ -175,6 +176,7 @@ export default function CategoryTests({ searchParams }: { searchParams: { id: st
                 </div>
               </div>
             </div>
+            <p id={`errorMessages-${test.id}`} className={styles.errorMessages}></p>
           </div>
         ))}
       </div>

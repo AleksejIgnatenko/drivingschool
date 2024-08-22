@@ -17,6 +17,11 @@ export const fetchUserNameChangeAsync = async (userId: string, newUserName: stri
         if (response.ok) {
             const responseData = await response.json();
             return responseData as UserModel;
+        } else if (response.status === 400) {
+            const errorMessages = document.getElementById('errorMessages') as HTMLElement;
+            errorMessages.style.display = "inline-block";
+            const errorMessage = await response.text();
+            errorMessages.textContent = errorMessage;
         } else {
             // Если ответ не успешный, проверяем статус и обрабатываем ошибку
             const errorMessage = await response.text();

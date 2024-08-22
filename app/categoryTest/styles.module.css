@@ -86,3 +86,9 @@
 .buttonRestartTest {
   display: none;
 }
+
+.errorMessages {
+  color: red;
+  display: inline-block; /* Display as inline-block */
+  height: 0;
+}

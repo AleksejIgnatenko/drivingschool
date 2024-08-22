@@ -114,6 +114,7 @@ export default function Users() {
               </div>
             </div>
           ))}
+          <p id='errorMessages' className={styles.errorMessages}></p>
         </div>
       </div>
     </main>

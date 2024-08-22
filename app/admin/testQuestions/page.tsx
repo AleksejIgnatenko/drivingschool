@@ -261,6 +261,7 @@ export default function TestQuestions({ searchParams }: { searchParams: { id: st
                 </div>
               </div>
             </div>
+            <p id='errorMessages' className={styles.errorMessages}></p>
           </div>
         ))}
       </div>

@@ -99,6 +99,7 @@ const deleteTestConfirmAsync = async (test: TestModel, event: React.MouseEvent<H
               <input type="button" value="Back" className={styles.buttonBack} onClick={toggleFormVisibility}/>
             </div>
           </div>
+          <p id='errorMessages' className={styles.errorMessages}></p>
         </form>
       )}
 
@@ -175,6 +176,7 @@ const deleteTestConfirmAsync = async (test: TestModel, event: React.MouseEvent<H
                 </div>
               </div>
             </div>
+            <p id={`errorMessages-${test.id}`} className={styles.errorMessages}></p>
           </div>
         ))}
       </div>

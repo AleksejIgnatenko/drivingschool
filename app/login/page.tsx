@@ -16,7 +16,6 @@ export default function Login() {
             password,
         };
         await loginUserAsync(loginUserRequest);
-        window.location.href = '/';
     };
 
     return (
@@ -42,7 +41,8 @@ export default function Login() {
                         />
                         <i className='bx bx-lock-alt'></i>
                     </div>
-                    <input type="button" value="Login" className={styles.buttonSignIn} onClick={handleLoginAsync} />
+                    <p id='errorMessages' className={styles.errorMessages}></p>
+                    <input type="button" value="Login" className={styles.buttonLogin} onClick={handleLoginAsync} />
                     <Link href={"/"}>
                         <input type="button" value="Back" className={styles.buttonBack} />
                     </Link>

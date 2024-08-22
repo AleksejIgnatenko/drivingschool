@@ -22,6 +22,11 @@ export const fetchUpdateCategoryAsync = async (categoryId: string, newCategoryNa
     if (response.ok) {
       const responseData: CategoryModel = await response.json();
       return responseData;
+    } else if (response.status === 400) {
+      const errorMessages = document.getElementById('errorMessages') as HTMLElement;
+      errorMessages.style.display = "inline-block";
+      const errorMessage = await response.text();
+      errorMessages.textContent = errorMessage;
     } else {
       const errorMessage = await response.text();
       console.error('Error fetching update category:', errorMessage);

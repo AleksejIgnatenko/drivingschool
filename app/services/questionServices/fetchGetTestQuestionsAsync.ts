@@ -25,6 +25,12 @@ export const fetchGetTestQuestionsAsync = async (idTest: string): Promise<Questi
         answer4: data.answer4,
         correctAnswer: data.correctAnswer
       }));
+    } else if (response.status === 400) {
+      const errorMessages = document.getElementById('errorMessages') as HTMLElement;
+      errorMessages.style.display = "inline-block";
+      const errorMessage = await response.text();
+      errorMessages.textContent = errorMessage;
+      return null;
     } else {
       const errorMessage = await response.text();
       console.error('Error fetching get test questions:', errorMessage);

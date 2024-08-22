@@ -19,6 +19,11 @@ export const fetchUpdateQuestionAsync = async(questionId: string, updateQuestion
     if (response.ok) {
       const responseData: QuestionModel = await response.json();
       return responseData;
+    } else if (response.status === 400) {
+      const errorMessages = document.getElementById(`errorMessages-${questionId}`) as HTMLElement;
+      errorMessages.style.display = "inline-block";
+      const errorMessage = await response.text();
+      errorMessages.textContent = errorMessage;
     } else {
       const errorMessage = await response.text();
       console.error('Error fetching update question', errorMessage);

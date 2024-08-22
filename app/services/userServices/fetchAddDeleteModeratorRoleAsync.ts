@@ -16,6 +16,11 @@ export const fetchAddModeratorAsync = async (userId: string) => {
         if (response.ok) {
             const responseData = await response.json();
             return responseData as UserModel;
+        } else if (response.status === 400) {
+            const errorMessages = document.getElementById('errorMessages') as HTMLElement;
+            errorMessages.style.display = "inline-block";
+            const errorMessage = await response.text();
+            errorMessages.textContent = errorMessage;
         } else {
             // Если ответ не успешный, проверяем статус и обрабатываем ошибку
             const errorMessage = await response.text();
@@ -32,7 +37,7 @@ export const fetchDeleteModeratorAsync = async (userId: string) => {
     try {
         const jwtToken = getCookie('jwtToken');
 
-        const response = await fetch(`https://localhost:7103/Users/deleteModeratorRole/${userId}`, {
+        const response = await fetch(`/api/Users/deleteModeratorRole/${userId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -43,6 +48,11 @@ export const fetchDeleteModeratorAsync = async (userId: string) => {
         if (response.ok) {
             const responseData = await response.json();
             return responseData as UserModel;
+        } else if (response.status === 400) {
+            const errorMessages = document.getElementById('errorMessages') as HTMLElement;
+            errorMessages.style.display = "inline-block";
+            const errorMessage = await response.text();
+            errorMessages.textContent = errorMessage;
         } else {
             // Если ответ не успешный, проверяем статус и обрабатываем ошибку
             const errorMessage = await response.text();

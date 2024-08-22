@@ -147,6 +147,7 @@ const deleteTestConfirmAsync = async (question: QuestionModel, event: React.Mous
               <input type="button" value="Back" className={styles.buttonBack} onClick={toggleFormVisibility}/>
             </div>
           </div>
+          <p id='errorMessages' className={styles.errorMessages}></p>
         </form>
       )}
 
@@ -261,6 +262,7 @@ const deleteTestConfirmAsync = async (question: QuestionModel, event: React.Mous
                 </div>
               </div>
             </div>
+            <p id={`errorMessages-${question.id}`} className={styles.errorMessages}></p>
           </div>
         ))}
       </div>

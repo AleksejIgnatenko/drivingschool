@@ -140,6 +140,7 @@ export default function Categories() {
                   </div>
                 </div>
               </div>
+              <p id='errorMessages' className={styles.errorMessages}></p>
             </div>
         ))}
       </div>

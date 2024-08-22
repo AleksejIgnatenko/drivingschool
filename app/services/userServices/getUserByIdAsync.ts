@@ -18,6 +18,12 @@ export const getUserByIdAsync = async (): Promise<UserModel | null> => {
       const userData = await response.json();
       console.log(userData);
       return userData as UserModel;
+    } else if (response.status === 400) {
+      const errorMessages = document.getElementById('errorMessages') as HTMLElement;
+      errorMessages.style.display = "inline-block";
+      const errorMessage = await response.text();
+      errorMessages.textContent = errorMessage;
+      return null;
     } else {
       // Если ответ не успешный, проверяем статус и обрабатываем ошибку
       const errorMessage = await response.text();
