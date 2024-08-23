@@ -73,7 +73,7 @@ export default function Login() {
               <Image src="/images/Cancellation.png" alt="Описание изображения" height={20} width={20} />
             </button>
           </div>
-          <p id='errorMessages' className={styles.errorMessages}></p>
+          <p id={`errorMessages-${userData?.id}`} className={styles.errorMessages}></p>
           <input type="button" value="Back" className={styles.buttonBack} onClick={handleBackClickAsync} />
         </div>
       </div>

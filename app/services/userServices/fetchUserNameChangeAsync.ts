@@ -18,7 +18,7 @@ export const fetchUserNameChangeAsync = async (userId: string, newUserName: stri
             const responseData = await response.json();
             return responseData as UserModel;
         } else if (response.status === 400) {
-            const errorMessages = document.getElementById('errorMessages') as HTMLElement;
+            const errorMessages = document.getElementById(`errorMessages-${userId}`) as HTMLElement;
             errorMessages.style.display = "inline-block";
             const errorMessage = await response.text();
             errorMessages.textContent = errorMessage;

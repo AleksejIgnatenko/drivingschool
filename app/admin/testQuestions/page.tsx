@@ -147,6 +147,7 @@ export default function TestQuestions({ searchParams }: { searchParams: { id: st
               <input type="button" value="Back" className={styles.buttonBack} onClick={toggleFormVisibility}/>
             </div>
           </div>
+          <p id='errorMessages' className={styles.errorMessages}></p>
         </form>
       )}
 
@@ -261,7 +262,7 @@ export default function TestQuestions({ searchParams }: { searchParams: { id: st
                 </div>
               </div>
             </div>
-            <p id='errorMessages' className={styles.errorMessages}></p>
+            <p id={`errorMessages-${question.id}`} className={styles.errorMessages}></p>
           </div>
         ))}
       </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './styles.module.css';
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, use } from "react";
 import { fetchAllUsersAsync } from '../../services/userServices/fetchAllUsersAsync';
 import { UserModel } from '@/app/Models/UserModel/UserModel';
 import Image from 'next/image';
@@ -112,9 +112,9 @@ export default function Users() {
                   </div>
                 </div>
               </div>
+            <p id={`errorMessages-${user.id}`} className={styles.errorMessages}></p>
             </div>
           ))}
-          <p id='errorMessages' className={styles.errorMessages}></p>
         </div>
       </div>
     </main>
